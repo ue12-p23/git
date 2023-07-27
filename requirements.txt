@@ -1,0 +1,17 @@
+calysto_bash
+
+# tooling
+
+jupyter
+jupytext
+ipywidgets
+
+ipythontutor
+nbautoeval
+nb-courselevels
+
+jupyter-contrib-nbextensions
+
+# tmp
+# see https://github.com/executablebooks/jupyter-book/issues/1902
+jupyter-server < 2
