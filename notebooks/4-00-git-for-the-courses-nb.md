@@ -19,7 +19,7 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 ```{code-cell}
 %%python
 from IPython.display import HTML
-HTML(url="https://raw.githubusercontent.com/ue12-p22/git/main/notebooks/_static/style.html")
+HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
 ```
 
 # utiliser `git` pour les cours
@@ -65,23 +65,23 @@ pour rappel, il est nécessaire de configurer
 * aller sur l'interface `Git Bash`
 * se déplacer (avec les commandes `pwd` et `ls` et `cd`) dans le dossier souhaité
 * une fois dans le dossier où vous souhaitez cloner les notebooks  
-  (par exemple `/Users/jeanmineur/git/ue12-p22`), faire
+  (par exemple `/Users/jeanmineur/git/ue12-p23`), faire
   ```bash
-  git clone git@github.com:ue12-p22/python-numerique.git
+  git clone git@github.com:ue12-p23/numerique.git
   ```
   pour trouver la bonne URL, regardez comment on fait dans la vidéo  
   en faisant bien attention de choisir le mode `SSH` comme ceci:  
 
   ![](media/github-choose-ssh.png)
 
-* un dossier va être créé, ici il s'appelle `python-numerique`  
+* un dossier va être créé, ici il s'appelle `numerique`  
   (si vous préférez un autre nom, ajoutez le à la commande ci-dessus)
 
 * dans le dossier choisi, vous allez trouver tout le contenu du cours, y compris
   les  notebooks ! ils sont généralement dans un sous-dossier `notebooks/`
 
 en naviguant sur github et plus particulièrement sur la page de l'utilisateur
-ue12-p22 (https://github.com/ue12-p22/), vous pouvez voir l'ensemble des
+ue12-p23 (https://github.com/ue12-p23/), vous pouvez voir l'ensemble des
 répertoires des cours d'informatique que vous avez eu jusque-là !
 
 +++

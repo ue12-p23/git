@@ -18,7 +18,7 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 ```{code-cell}
 %%python
 from IPython.display import HTML
-HTML(url="https://raw.githubusercontent.com/ue12-p22/git/main/notebooks/_static/style.html")
+HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
 ```
 
 # commits & bonnes pratiques
@@ -145,7 +145,7 @@ https://docs.github.com/en/github/writing-on-github/autolinked-references-and-ur
 +++
 
 Clonez ce dépôt et suivez les instructions du README:
-https://github.com/ue12-p22/git-tp-add-by-lines
+https://github.com/ue12-p23/git-tp-add-by-lines
 
 +++
 
