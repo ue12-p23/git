@@ -19,8 +19,8 @@ tracks:
 
 builds:
   - id: handouts
-    name: format HTML
-    description: contenu statique et cherchable
+    name: cours sur git
+    description: HTML statique et cherchable
     directory: notebooks
     script: |
       pip install jupyter-book
