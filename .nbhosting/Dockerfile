@@ -8,6 +8,5 @@ FROM nbhosting/minimal-notebook
 RUN true \
  && pip install -U jupyterlab notebook jupytext jupyterlab-myst \
  && pip install -U jupyterlab-courselevels \
- && pip install -U ipythontutor nbautoeval  \
  && pip install calysto_bash \
  && true
