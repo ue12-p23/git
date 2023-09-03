@@ -9,13 +9,17 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: bonnes pratiques
 ---
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 
-```{code-cell}
+```{code-cell} ipython3
 %%python
 from IPython.display import HTML
 HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
@@ -173,7 +177,7 @@ Pour information, on peut faire ce genre de choses également à partir d'outils
 
 ***
 
-et pour finir voice ce que xkcd a à dire sur les messages de commit ;)  
+et pour finir voici ce que xkcd a à dire sur les messages de commit ;)  
 (il les représente dans l'autre sens, les derniers en bas...)
 
 ![](media/xkcd-git-commit.png)

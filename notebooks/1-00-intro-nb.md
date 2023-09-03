@@ -10,6 +10,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: introduction
 ---
@@ -33,10 +38,12 @@ illustrer rapidement **le besoin**, et **les cas d'usage** les plus simples;
 [accessible aussi
 ici](https://github.com/ue12-p23/git/raw/main/notebooks/media/kn2-introduction-git.pdf)
 
+````{note}
 la présentation contient des animations, assurez-vous de bien la visionner en
 mode slideshow  
 durée : grand maximum 10', il ne s'agit **pas de tout comprendre** mais juste de
 brosser le contexte
+````
 
 +++
 
@@ -55,12 +62,13 @@ Après plusieurs décennies de tâtonnements, et des strates d'outils dédiés �
 
 Signalons en effet que git est utilisé **aussi** pour notamment :
 
-* le processus d'**élaboration des lois**: gestion du corpus de lois: le Council de Washington DC
-  * <https://github.com/DCCouncil/dc-law-html>
+* le processus d'**élaboration des lois**:
+  * <https://datacoalition.org/blog/12844184>
 * la mise à disposition **d'open-data**:
   * <https://github.com/collections/open-data>
 
-En réalité il potentiellement utile pour *pratiquement* tout ce qui est numérique, même si clairement il s'applique le mieux à des contenus de nature textuelle.
+En réalité il potentiellement utile pour pratiquement **tout ce qui est numérique**  
+même si clairement **il s'applique le mieux** à des contenus **de nature textuelle**
 
 +++
 
@@ -72,5 +80,5 @@ En réalité il potentiellement utile pour *pratiquement* tout ce qui est numér
 * les sources de ce cours :
   <https://github.com/ue12-p23/git>
   
-* également utile, une *cheat sheet* éditée par github :
+* également utile, une *cheat sheet* éditée par github :  
   <https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf>

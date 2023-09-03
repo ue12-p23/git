@@ -9,6 +9,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: les bases
 ---
@@ -126,13 +131,7 @@ cd my-first-project
 ls
 ```
 
-ce qui est équivalent à écrire:
-```bash
-$ mkdir my-first-project
-$ cd my-first-project
-$ ls
-
-```
+ce qui en vrai donne ceci:
 
 ![](media/term-mkdir-cd-ls.png)
 
@@ -181,7 +180,7 @@ total 8
 
 +++
 
-## version de la commande (`git version`)
+## version de la commande `git version`
 
 +++
 
@@ -205,7 +204,7 @@ si vous n'avez pas exactement la même version, aucun souci, on n'utilisera aucu
 
 +++
 
-## on transforme le dossier en dépôt (`git init`)
+## on transforme le dossier en dépôt `git init`
 
 +++
 
@@ -265,7 +264,7 @@ il est beaucoup plus important de se familiariser avec le modèle mental des obj
 
 +++
 
-## l'état du répo (`git status`)
+## l'état du répo `git status`
 
 +++
 
@@ -325,7 +324,7 @@ Enfin `git` nous dit que, pour ajouter des fichiers dans ce qui fera partie du p
 
 +++
 
-## ajout de fichiers sous gestion de version (`git add`)
+## ajout de fichiers sous gestion de version `git add`
 
 +++
 
@@ -819,12 +818,11 @@ e2c02ca (HEAD -> main) première implémentation de factorielle dans le fichier 
 
 Si votre `git log --oneline` correspond au nôtre, sautez cette cellule.
 
-Sinon: pas de panique ! Cette cellule reprend toutes les commandes qui ont modifié votre repository `git`. Coupez ces lignes et collez les dans un terminal.
+Sinon: pas de panique ! On vous redonne ici toutes les commandes qui ont modifié votre repository `git`. Coupez ces lignes et collez les dans un terminal.
 
 <div style="font-size: 1vw; line-height:1.1;">
 
 ```bash
-
 # on a créé un répertoire et on s'y est déplacé
 mkdir my-first-project
 cd my-first-project
@@ -878,7 +876,7 @@ git log --oneline
 
 +++
 
-## fichiers du repo (`git ls-files`)
+## fichiers du repo `git ls-files`
 
 +++
 
@@ -899,7 +897,7 @@ Oui vous feriez un `git status` !
 
 +++
 
-## différences des versions de fichiers (`git diff`)
+## différences des versions de fichiers `git diff`
 
 +++
 
@@ -1083,7 +1081,7 @@ dans les deux cas, utilisez  `git status` et `git log` pour vérifier que votre 
 
 +++
 
-## le graphe des commits (`git log --graph`)
+## le graphe des commits `git log --graph`
 
 +++
 

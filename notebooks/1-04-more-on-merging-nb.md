@@ -9,6 +9,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: la fusion
 ---
@@ -16,8 +21,6 @@ nbhosting:
 Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 
 ```{code-cell}
-:trusted: true
-
 %%python
 from IPython.display import HTML
 HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
@@ -53,17 +56,19 @@ un commit qui **contienne à la fois le code courant et celui du commit `to-merg
 
 +++ {"tags": ["framed_cell"]}
 
+````{note}
 on rappelle aussi d'ailleurs, dans un autre registre, qu'il est sage de lancer la commande `git merge` **dans un dépôt  propre**, sans modifications pendantes
+````
 
 +++
 
 ## le *fast-forward*
 
-une fusion *fast-forward*, c'est le cas où **le commit courant est déjà un parent** (transitivement) de `to-merge`; comme par exemple ici :
+une fusion *fast-forward*, c'est le cas où **le commit courant est déjà un parent** (transitivement) de `to-merge`; comme par exemple ici:
 
 ![](media/kn-merge-fast-forward.svg)
 
-* la branche courante est `main`, on fusionne avec le commit `devel`
+* la branche courante est `main` (et c'est pour ça qu'elle est encadrée en rouge), et on fusionne avec le commit `devel`
 * on cherche donc à créer un commit qui contienne à la fois de code de `main` et de `devel`
 * mais, attendez : le commit `A` est un parent de `C`  
 * et donc par définition `C` **vérifie déjà la bonne propriété** 
@@ -82,7 +87,7 @@ il faut toujours lancer la fusion sur un dépôt propre)
 
 la règle qui permet de savoir si on est, ou pas, dans le cas d'un *fast-forward*, est simple :  
 **si (et seulement si) il existe une chaine de parenté** entre les deux commits (celui ou on est, et celui qu'on veut fusionner),  
-alors on est dans un *fast-forward*, il n'est pas besoin de créer un commit, il en existe déjà un qui matérialise la fusion
+alors on est dans un *fast-forward*, il n'est **pas besoin de créer** un commit, il en existe déjà un qui matérialise la fusion
 
 ici dans le premier exemple on avait `to-merge=C → B → HEAD=A`, donc pas besoin de créer un commit, simplement besoin d'avancer la branche courante
 
@@ -116,9 +121,11 @@ mais à l'impossible nul n'est tenu ! et si les deux **branches touchent le mêm
 
 +++
 
+````{note}
 **en première lecture, on recommande de zapper la partie suivante**  
-qui est taggée de niveau bleu intermédiaire, et de passer directement au résumé  
+qui est de niveau intermédiaire, et de passer directement au résumé  
 vous pourrez vous y reporter plus tard, lorsque vous aurez besoin de gérer un conflit…
+````
 
 +++ {"tags": ["level_intermediate"]}
 
@@ -183,7 +190,6 @@ Ils partent donc tous les deux du formulaire vide, ils remplissent chacun leur p
 ```{code-cell}
 :cell_style: split
 :tags: [level_intermediate]
-:trusted: true
 
 !cat form-mcgonagall.txt
 ```
@@ -191,7 +197,6 @@ Ils partent donc tous les deux du formulaire vide, ils remplissent chacun leur p
 ```{code-cell}
 :cell_style: split
 :tags: [level_intermediate]
-:trusted: true
 
 !cat form-dumbledore.txt
 ```
@@ -210,18 +215,20 @@ git commit -m"notes mcgonagall"
 
 +++ {"tags": ["level_intermediate"]}
 
-pour la deuxième version, on a besoin de créer la branche `dumbledore` et de revenir en arrière; deux options, on peut
+pour la deuxième version, on a besoin de créer la branche `dumbledore` et de revenir en arrière; on peut faire en un seul coup avec le raccourci `git switch -c`  
+   ```bash
+   git switch -c dumbledore HEAD~
+   ```
 
-* soit décomposer : créer la branche puis y aller  
+````{note}
+:class: dropdown
+
+pour rappel, on peut aussi décomposer, le faire en deux fois: créer la branche puis y aller  
   ```bash
   git branch dumbledore HEAD~
   git switch dumbledore
   ```
-
-* ou tout faire d'un coup avec le raccourci `git switch -c`  
-   ```bash
-   git switch -c dumbledore HEAD~
-   ```
+````
 
 +++ {"tags": ["level_intermediate"]}
 
@@ -425,5 +432,6 @@ la mauvaise nouvelle, c'est qu'aucune des deux ne convient, et ce qu'on va faire
 
 * dans le cas contraire, la **création** d'un commit est **nécessaire**
   * les **modifications disjointes** peuvent être fusionnées **automatiquement**
-  * lorsque deux modifications changent la **même zone** de code par contre, la fusion atteint ses limites,  
-  et on doit **résoudre les conflits**, puis finaliser la fusion à la main en appelant `git commit`
+  * lorsque deux modifications changent la **même zone** de code par contre  
+    la fusion atteint ses limites, et on doit **résoudre les conflits**  
+    puis finaliser la fusion à la main en appelant `git commit`

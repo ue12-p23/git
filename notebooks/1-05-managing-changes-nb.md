@@ -9,6 +9,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: "diff\xE9rences pendantes"
 ---
@@ -16,8 +21,6 @@ nbhosting:
 Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 
 ```{code-cell}
-:trusted: true
-
 %%python
 from IPython.display import HTML
 HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
@@ -41,21 +44,28 @@ mais dans la vraie vie bien sûr, ce n'est pas comme ça que ça fonctionne, et 
 
 +++
 
+## terminal ou GUI
+
 dans ce notebook on résume les commandes utiles pour visualiser / gérer / abandonner les différences pendantes
 
-par contre, on ne donne pas le mode d'emploi détaillé de toutes les commandes, à vous de chercher dans la documentation
+* dans la **première partie** on parle des commandes à lancer dans les terminal
+  par contre, on ne donne pas le mode d'emploi détaillé de toutes les commandes, à vous de chercher dans la documentation
 
-s'agissant de la deuxième partie, inutile de retenir tous les détails, se souvenir que ça existe pour pouvoir y revenir en cas de besoin
+* on peut tout faire depuis le terminal, mais pour gérer finement les différences (ligne à ligne notamment), c'est souvent beaucoup plus pratique à partir d'une GUI, c'est ce qu'on va voir dans la **deuxième partie**
 
 +++
 
-## le workflow usuel
+## depuis le terminal
+
++++
+
+### le workflow usuel
 
 dans un premier temps on revoit, sous une forme visuelle, les commandes qu'on a déjà pratiquées
 
 +++
 
-### un dépôt propre
+#### un dépôt propre
 
 on utilisera ce type de présentation dans la suite :
 
@@ -63,7 +73,7 @@ on utilisera ce type de présentation dans la suite :
 
 +++
 
-### `git status` et `git diff`
+#### `git status` et `git diff`
 
 en général le dépôt n'est pas propre, on peut voir les (deux familles de) différences avec ces 2 commandes
 
@@ -71,7 +81,7 @@ en général le dépôt n'est pas propre, on peut voir les (deux familles de) di
 
 +++
 
-### j'utilise mon éditeur
+#### j'utilise mon éditeur
 
 ![](media/kn-lifecycle-3-editor.svg)
 
@@ -79,7 +89,7 @@ le changement que je sauve δ s'ajoute en fait aux différences existantes, qui 
 
 +++
 
-### `git add`
+#### `git add`
 
 ![](media/kn-lifecycle-4-add.svg)
 
@@ -87,7 +97,7 @@ la différence apparait maintenant dans la deuxième zone (*staged changes*)
 
 +++
 
-### `git commit`
+#### `git commit`
 
 ![](media/kn-lifecycle-5-commit.svg)
 
@@ -95,7 +105,12 @@ on crée le commit sur la base du contenu de l'index, du coup les deux (l'index 
 
 +++ {"tags": ["level_intermediate"]}
 
-## pour revenir en arrière
+### pour revenir en arrière
+
+````{note}
+s'agissant de cette partie, inutile de retenir tous les détails, se souvenir que ça existe pour pouvoir y revenir en cas de besoin
+````
+
 
 jusqu'à maintenant on a travaillé "de gauche à droite"
 
@@ -114,7 +129,7 @@ ou encore, pendant le debug on a ajouté 250 instructions `print()`, qu'on veut 
 
 +++ {"tags": ["level_intermediate"]}
 
-### `git reset`
+#### `git reset`
 
 pour annuler le `add` : si un changement a été promu dans l'index, on peut le déclasser
 
@@ -122,7 +137,7 @@ pour annuler le `add` : si un changement a été promu dans l'index, on peut le
 
 +++ {"tags": ["level_intermediate"]}
 
-### `git restore --`
+#### `git restore --`
 
 pour jeter les changements non indexés
 
@@ -130,7 +145,7 @@ pour jeter les changements non indexés
 
 +++ {"tags": ["level_intermediate"]}
 
-### `git reset --hard`
+#### `git reset --hard`
 
 pour se mettre inconditionnellement sur un commit, avec un dépôt propre
 
@@ -138,7 +153,7 @@ pour se mettre inconditionnellement sur un commit, avec un dépôt propre
 
 +++ {"tags": ["level_intermediate"]}
 
-## refaire un commit avec `git commit --amend`
+### refaire un commit avec `git commit --amend`
 
 vous venez de faire un commit mais il est raté !
 
