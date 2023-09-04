@@ -9,6 +9,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: "r\xE9sum\xE9 (2)"
 ---
@@ -68,4 +73,4 @@ HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/
 |            | le commit courant au dessus de la branche `main` |
 |            | **conditions nécessaires:** |
 |            | 1. avoir les droits d'accès dans le *remote* |
-|            | 2. il doit s'agit d'une fusion *fast-forward* |
+|            | 2. il doit s'agir d'une fusion *fast-forward* |
