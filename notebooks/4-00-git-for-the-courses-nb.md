@@ -10,6 +10,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: git pour les cours
 ---
@@ -26,18 +31,15 @@ HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/
 
 +++
 
-au début de l'année, il est pratique de pouvoir suivre les cours sur `nbhosting`
-
-cependant nous vous recommandons, une fois que vous maitrisez mieux
-l'environnement, de mettre **les notebooks et tout le contenu du cours sur votre
+on vous conseille de mettre **les notebooks et tout le contenu du cours sur votre
 ordinateur**; pour cela la démarche à suivre est indiquée ci-dessous
 
 pour rappel également, dans la vidéo suivante on a fait une micro-démo
 de l'environnement en action
-https://www.youtube.com/watch?v=vZUUQLlBPIs
+<https://www.youtube.com/watch?v=i_ZcP7iNw-U>
 
 attention, nous mettons régulièrement à jour les notebooks chaque semaine; du
-coup pour garder votre travail **et** une version à jour, il faut pull le dépôt
+coup pour garder votre travail **et** une version à jour, il faut *pull* le dépôt
 distant; on explicite également les étapes de mise à jour ci-dessous
 
 +++
@@ -53,8 +55,7 @@ pour rappel, il est nécessaire de configurer
 * vos nom/prénom et adresse e-mail
 * l'éditeur à utiliser lors des commits (pour nous: vs-code)
 * la clé ssh
-* et, moins crucial, le nom de la branche par défaut (la convention moderne est
-  d'utiliser `main` et non plus `master`)
+* et quelques autres détails...
 
 +++
 
@@ -80,7 +81,7 @@ pour rappel, il est nécessaire de configurer
 * dans le dossier choisi, vous allez trouver tout le contenu du cours, y compris
   les  notebooks ! ils sont généralement dans un sous-dossier `notebooks/`
 
-en naviguant sur github et plus particulièrement sur la page de l'utilisateur
+en naviguant sur github et plus particulièrement sur la page de l'orga
 ue12-p23 (https://github.com/ue12-p23/), vous pouvez voir l'ensemble des
 répertoires des cours d'informatique que vous avez eu jusque-là !
 
@@ -88,18 +89,19 @@ répertoires des cours d'informatique que vous avez eu jusque-là !
 
 ### installer les dépendances
 
-* *optionnel*: si vous utilisez un système d'environnements virtuels, prenez
-  soin de sélectionner le bon, par exemple (selon votre setup)
+* *optionnel*: vous pouvez aussi créer un environnement virtuel en lui donnant
+  un nom (et éventuellement la version de `python` que vous voulez);
+  ici je choisis de créer un environnement virtuel qui s'appelle aussi `numerique`
+  
   ```bash
-  conda activate pynum
+  conda create -n numerique python=3.9.0
   ```
 
-* *optionnel*: vous pouvez aussi créer un environnement virtuel en lui donnant
-  un nom (et éventuellement la version de `python` que vous voulez), n'oubliez
-  pas de le sélectionner (l'activer)
+* *optionnel*: si vous utilisez un système d'environnements virtuels, prenez
+  soin de sélectionner le bon; il faut le faire à chaque fois qu'on crée un nouveau terminal,
+  par exemple 
   ```bash
-  conda create -n mon-env-pynum python=3.9.0
-  conda activate mon-env-pynum
+  conda activate numerique
   ```
 
 * dans le dossier du cours se trouve un fichier `requirements.txt`  
@@ -121,7 +123,7 @@ répertoires des cours d'informatique que vous avez eu jusque-là !
 
 * toujours dans le dossier du cours, en faisant
   ```bash
-  jupyter notebook
+  jupyter lab
   ```
   vous lancez le serveur et ainsi pouvez lire les notebooks
 
@@ -157,7 +159,7 @@ si au moment du pull, vous voyez ce message:
 
 cela signifie qu'**il y a des conflits** (par exemple, vous avez fait
 *localement* dans un fichier des modifications **au même endroit** que des
-changements sur le même fichier sur le dépot distant); normalement c'est assez
+changements faits par le prof); normalement c'est assez
 rare, mais si c'est le cas, il va vous falloir régler les conflits; voici
 comment les résoudre:
 
