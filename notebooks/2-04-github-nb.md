@@ -51,6 +51,23 @@ pour ajouter **une dimension sociale** et offrir des possibilités de collaborat
   comme par exemple, pour ce cours justement:  
   <https://github.com/ue12-p23/git>
 
+````{admonition} le remote *origin*
+:class: dropdown
+
+toujours au sujet des noms, vous pouvez noter que le plus souvent,
+si vous avez dans votre repo local un *remote* qui s'appelle `origin`, 
+avec nos pratiques le plus souvent ce remote correspond au repo sur github:
+
+```bash
+# pour lister les remotes
+$ git remote
+origin
+# pour voir à quelle URL correspond le remote 'origin'
+$ git remote get-url origin
+git@github.com:ue12-p23/git.git
+```
+````
+
 +++
 
 ## les accès
