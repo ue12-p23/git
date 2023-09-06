@@ -12,4 +12,7 @@ parts:
 - caption: git pour les cours
   chapters:
   - glob: 4-*-nb
+- caption: optionnel
+  chapters:
+  - glob: 5-*-nb
 root: 1-00-intro-nb

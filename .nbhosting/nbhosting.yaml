@@ -16,6 +16,9 @@ tracks:
   - name: git pour les cours
     notebooks:
       - "notebooks/4-*-nb.md"
+  - name: optionnel
+    notebooks:
+      - "notebooks/5-*-nb.md"
 
 builds:
   - id: handouts
