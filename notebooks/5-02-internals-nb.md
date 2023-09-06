@@ -150,7 +150,7 @@ et bien entendu le contenu de chaque sous-dossier est de type `tree` aussi, donc
 ### le type *blob*
 
 enfin pour calculer le contenu des fichiers, on va utiliser .. `cat-file` de nouveau, bien sûr  
-voyons ça en vrai, avec le premier blob qui est mentionné 
+voyons ça en vrai, avec le premier blob qui est mentionné
 
 ```{code-cell}
 # calculons le hash du premier blob
@@ -182,15 +182,14 @@ chacun de ces objets est rangé dans un fichier sous `.git/objects`; par exemple
 c'est-à-dire que les deux premiers caractères du hash servent pour le nom du dossier, et le reste pour le nom du fichier  
 il s'agit d'une simple optimisation pour éviter de se retrouver avec un trop grand nombre de fichiers dans un seul dossier
 
-
 +++
 
 ### et sous quel format ?
 
 le fichier sous `.git/objects` contient le texte (celui qu'on a vu avec `cat-file`) simplement compressé avec un outil qui s'appelle `zlib`
 
-on peut décompresser directement en bash avec `gzip`, même si c'est encore plus cryptique que la magie noire de tout à l'heure :)
-(merci à <https://unix.stackexchange.com/questions/22834/how-to-uncompress-zlib-data-in-unix> pour cette astuce)
+on trouve `zlib-flate` dans le package `qpdf`  
+(merci à <https://unix.stackexchange.com/questions/22834/how-to-uncompress-zlib-data-in-unix> pour les détails)
 
 ```{code-cell}
 # ici il faut bien sûr utiliser le hash complet, pas le raccourci
@@ -220,7 +219,21 @@ ls -l ../$path
 et donc maintenant qu'on a localisé le fichier on peut le décompresser
 
 ```{code-cell}
-(printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" ; cat ../$path) | gzip -dc
+zlib-flate --uncompress ../$path
 ```
 
 et on se convainc comme ça que `cat-file` ne fait pas grand-chose de plus que de décompresser le hash qu'on lui passe
+
++++
+
+````{admonition} avec gzip
+:class: seealso
+
+on peut aussi décompresser directement en bash avec `gzip`, même si c'est encore plus cryptique que la magie noire de tout à l'heure :)
+(merci à <https://unix.stackexchange.com/questions/22834/how-to-uncompress-zlib-data-in-unix> pour cette astuce)
+
+```bash
+(printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" ; cat ../$path) | gzip -dc
+```
+à la fin `gzip se plaint qu'il manque le footer de checksum, mais c'est suffisant pour ce qu'on cherche à faire...
+````

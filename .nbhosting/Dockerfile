@@ -2,10 +2,9 @@
 FROM nbhosting/minimal-notebook
 
 # NOTE
-# we cannot use jupyter nbextension enable/disable
-# because we provide our own nbconfig/notebook.json
-# and that is where is stored the enabled/disabled extensions
+# qpdf is for zlib-flate that we use only in the last optional notebook
 RUN true \
+ && apt-get install -y qpdf \
  && pip install -U jupyterlab notebook jupytext jupyterlab-myst \
  && pip install -U jupyterlab-courselevels \
  && pip install calysto_bash \
