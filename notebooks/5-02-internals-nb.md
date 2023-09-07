@@ -47,20 +47,22 @@ pour plus de détails, je vous renvoie à cette page <https://git-scm.com/book/e
 en fait pour décrire un *commit* on a besoin de 3 types d'objets
 
 * `commit`, pour représenter, eh bien .. un commit
-* `tree`, pour représenter un dossier
-* `blob`, pour les fichiers usuels
+* `tree`, pour le contenu d'un dossier
+* `blob`, pour le contenu d'un fichier usuel
 
 et pour faire court, on voit ça en détail tout de suite, mais
 
 * un `commit` contient des infos administratives (auteur/dat/message) + 1 `tree` (et un ou des parent.s)
 * un `tree` contient une collection de `tree` et/ou `blob`
-* un `blob` correspond à un fichier usuel
+* un `blob` contient tout simplement le fichier tel-quel
+
+sachant que pour gagner de la place tout ceci est compressé
 
 +++
 
 ### le type *commit*
 
-pour faire court, un object `commit` est implémenté comme un simple fichier texte (en réalité il est compressé, mais en première approximation..)  
+un object `commit` est implémenté comme un simple fichier texte compressé  
 et pour le voir il suffit de faire
 
 ```bash
@@ -82,11 +84,12 @@ git log -3 --oneline
 commit_hash=$(git log -1 --pretty='%h')
 
 # et on l'affiche
+# vous pouvez vérifier dans le git log au dessus
 echo le hash du commit courant est $commit_hash
 ```
 
 ```{code-cell}
-# le contenu typique d'un objet de type 'commit'
+# et voici le contenu typique d'un objet de type 'commit'
 
 git cat-file -p $commit_hash
 ```
@@ -98,28 +101,32 @@ ce sont les deux premiers qui vont nous intéresser maintenant, car ils mériten
 * le `parent`, c'est tout simplement le hash du commit parent (il peut y en avoir plusieurs si on regarde un commit de fusion)
 * le `tree`, c'est un objet qui va nous dire le contenu de ce commit
 
-et du coup le hash correspondant au `tree` n'est pas un objet de type commit, mais de type `tree`
+et du coup le hash correspondant au `tree`, puisque ça donne le détail du dossier à la racine du repo,
+n'est pas un objet de type `commit`, mais de type `tree`
+
+regardons ça de plus près
 
 +++
 
 ### le type *tree*
 
-c'est le même principe, on va regarder le contenu de cet objet à partir de son hash, en utilisant comme plus haut la commande `cat-file`
+c'est le même principe, on obtient le contenu de cet objet à partir de son hash, en utilisant comme plus haut la commande `cat-file`
 
 à nouveau regardons ce que ça donne avec le commit courant
 
 ```{code-cell}
-# à nouveau on fait un peu de contorsions en bash pour calculer le hash du `tree` du commit
-# un peu de magie noire, ce n'est pas utile de comprendre le détail de cette commande ;)
+# pareil, on fait un peu de contorsions en bash pour calculer 
+# le hash du `tree` du commit 
+# un peu de magie noire, ce n'est pas utile 
+# de comprendre le détail de cette commande ;)
 
 tree_hash=$(git cat-file -p $commit_hash | grep '^tree ' | cut -d' ' -f2)
 
+# vérifiez que c'est bien ce qui apparaissait dans la première ligne du commit
 echo le hash du tree du commit courant est $tree_hash
 ```
 
-et vous pouvez vérifier que c'est bien ce qui apparaissait dans la première ligne du commit
-
-regardons à présent le contenu de cet objet-là
+et voici donc le contenu typique d'un objet de type `tree`
 
 ```{code-cell}
 git cat-file -p $tree_hash
@@ -127,10 +134,10 @@ git cat-file -p $tree_hash
 
 cette fois, on voit une simple collection d'objets, un mélange de `tree` et de `blob`  
 et vous l'avez deviné, cette liste donne le contenu du dossier principal du commit:
-- les entrées de type `tree` indique que le dossier principal a un sous-dossier
-- les entrées de tyle `blob` correspondent aux fichiers usuels (on va voir ça tout de suite)
+- les entrées de type `tree` signale la présence d'un sous-dossier
+- les entrées de tyle `blob` correspondent aux fichiers usuels
 
-ainsi avec un listing comme celui-ci
+ainsi pour être concret avec un listing comme celui-ci
 ```console
 100644 blob ffdd283698ab76f28f262894cbf9b4cc005f953f	.gitignore
 040000 tree 4d747763edc535af280224922965319fb5e5ec1a	.nbhosting
@@ -143,14 +150,17 @@ on sait que le commit contient à sa racine:
 * 2 sous-dossiers qui s'appellent `.nbhosting` et `notebooks`
 * et 3 fichiers `.gitignore`, `README.md` et `requirements.txt`
 
-et bien entendu le contenu de chaque sous-dossier est de type `tree` aussi, donc est calculé de la même façon
+pour retrouver le contenu des sous-dossiers, eh bien on vient de voir comment ça marche
 
 +++
 
 ### le type *blob*
 
-enfin pour calculer le contenu des fichiers, on va utiliser .. `cat-file` de nouveau, bien sûr  
-voyons ça en vrai, avec le premier blob qui est mentionné
+il ne reste plus qu'à comprendre comment on retrouve le contenu des fichiers usuels
+ça ne peut pas être plus simple, l'objet est tout simplement sauvé comme le fichier compressé
+
+voyons ça, on va utiliser .. `cat-file` de nouveau, bien sûr  
+et avec le premier blob qui est mentionné ça nous donnerait
 
 ```{code-cell}
 # calculons le hash du premier blob
@@ -164,8 +174,8 @@ echo le premier blob a pour hash $blob_hash
 
 ```{code-cell}
 # et voici maintenant le contenu du fichier correspondant à ce blob
-# normalement c'est .gitignore
-# vous pouvez vérifier que ça correspond bien au contenu de votre repo
+# qui correspond bien au contenu du .gitignore à la racine du repo
+# (et vous pouvez vérifier dans votre repo)
 
 git cat-file -p $blob_hash
 ```
@@ -219,7 +229,7 @@ ls -l ../$path
 et donc maintenant qu'on a localisé le fichier on peut le décompresser
 
 ```{code-cell}
-zlib-flate --uncompress ../$path
+cat ../$path | zlib-flate -uncompress
 ```
 
 et on se convainc comme ça que `cat-file` ne fait pas grand-chose de plus que de décompresser le hash qu'on lui passe
@@ -227,7 +237,7 @@ et on se convainc comme ça que `cat-file` ne fait pas grand-chose de plus que d
 +++
 
 ````{admonition} avec gzip
-:class: seealso
+:class: seealso dropdown
 
 on peut aussi décompresser directement en bash avec `gzip`, même si c'est encore plus cryptique que la magie noire de tout à l'heure :)
 (merci à <https://unix.stackexchange.com/questions/22834/how-to-uncompress-zlib-data-in-unix> pour cette astuce)
