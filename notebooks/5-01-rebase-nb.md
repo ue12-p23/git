@@ -9,6 +9,11 @@ kernelspec:
   display_name: Calysto Bash
   language: bash
   name: calysto_bash
+language_info:
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: rebase
 ---
@@ -16,8 +21,6 @@ nbhosting:
 Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 
 ```{code-cell}
-:trusted: true
-
 %%python
 from IPython.display import HTML
 HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
@@ -59,7 +62,7 @@ c'est-à-dire qu'en quelque sorte on va
 * prendre le petit bout de chemin qui nous a mené de cette fourche au commit courant
 * et "rejouer" cette suite de commits, mais en partant de l'endroit qu'on a désigné dans la commande `rebase`, ici `main`
 
-+++ {"trusted": true}
++++
 
 donc vous voyez que si on compare les deux scénarions (le merge et le rebase), il y a pas mal de similitudes en ceci que dans les deux cas, le contenu de `devel` est le même !  
 en effet en partant de la fourche, on a bien dans les deux cas le résultat des changements $δ_1+δ_2+δ_3+δ_4$
