@@ -6,20 +6,21 @@ jupytext:
     extension: .md
     format_name: myst
 kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+  display_name: Calysto Bash
+  language: bash
+  name: calysto_bash
 language_info:
-  name: python
-  nbconvert_exporter: python
-  pygments_lexer: ipython3
+  help_links:
+  - text: MetaKernel Magics
+    url: https://metakernel.readthedocs.io/en/latest/source/README.html
+  name: bash
 nbhosting:
   title: bonnes pratiques
 ---
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 
-```{code-cell} ipython3
+```{code-cell}
 %%python
 from IPython.display import HTML
 HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
@@ -161,19 +162,25 @@ Car il nous faut la possibilité d'ajouter dans l'index, non pas tout le contenu
 
 On a déjà parlé de cette feature dans vs-code, pour rappel:
 
-+++
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
 
-<video width="800px" controls src="_static/vscode-line-by-line.mp4" type="video/mp4"></video>
-
-+++
+%%python
+from ipywidgets import Video
+Video.from_file("_static/vscode-line-by-line.mp4")
+```
 
 Pour information, on peut faire ce genre de choses également à partir d'outils 'graphiques' autour de `git`, comme par exemple avec `SourceTree` (qui est dispo sur Windows et Mac, malheureusement pas sur linux..)
 
-+++
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
 
-<video width="800px" controls src="_static/sourcetree-line-by-line.mp4" type="video/mp4"></video>
-
-+++
+%%python
+from ipywidgets import Video
+Video.from_file("_static/sourcetree-line-by-line.mp4")
+```
 
 ***
 

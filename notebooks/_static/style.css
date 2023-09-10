@@ -117,6 +117,8 @@ div.cell[data-tag-frame=true]>div.inner_cell>div.rendered_html>h4:first-child {
 }
 */
 
+/* no longer used, we use ipywidgets.Video.from_file instead
 video {
     width: 100%;
 }
+*/

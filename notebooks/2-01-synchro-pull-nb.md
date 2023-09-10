@@ -79,7 +79,14 @@ et du coup en passant on va parler aussi de `git fetch` qui est, si on veut, un 
 
 on a déjà parlé de cette commande, c'est celle qui permet en partant de rien, de dupliquer un dépôt, typiquement trouvé sur github; le fonctionnement est simple, et peut être illustré comme ceci
 
-<video width="800px" controls src="_static/Clone.mp4" type="video/mp4"></video>
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
+
+%%python
+from ipywidgets import Video
+Video.from_file("_static/Clone.mp4")
+```
 
 * dans un premier temps on duplique le graphe des commits, y compris le commit courant
 * à partir de quoi on peut remplir l'index et les fichiers
@@ -162,7 +169,14 @@ pour ça la deuxième commande de synchronisation qu'on est amené à utiliser l
 
 on regarde son fonctionnement illustré dans une vidéo (dans le prolongement du clip précédent)
 
-<video width="800px" controls src="_static/Pull.mp4" type="video/mp4"></video>
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
+
+%%python
+from ipywidgets import Video
+Video.from_file("_static/Pull.mp4")
+```
 
 pour résumer, on peut dire que
 
@@ -229,7 +243,14 @@ la troisième chose à retenir est que, puisque `pull` finit par faire un `merge
   on est en train de faire un `pull`, on n'est pas du tout en train d'essayer de toucher au dépôt distant  
   (dans lequel, de toutes façons, on n'a pas forcément le droit d'écrire en plus)
 
-<video width="800px" controls src="_static/PullDiverge.mp4" type="video/mp4"></video>
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
+
+%%python
+from ipywidgets import Video
+Video.from_file("_static/PullDiverge.mp4")
+```
 
 +++ {"tags": ["level_intermediate"]}
 

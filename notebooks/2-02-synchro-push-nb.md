@@ -74,17 +74,27 @@ sans discuter plus avant de la pertinence de ce choix, voyons d'abord comment to
 
 cette vidéo décortique le fonctionnement de `push` dans un cas simple
 
-<video width="800px" controls src="_static/Push.mp4" type="video/mp4"></video>
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
 
-+++
+%%python
+from ipywidgets import Video
+Video.from_file("_static/Push.mp4")
+```
 
 ## mais attention le push peut coincer !!!
 
 dans la suite de la vidéo on envisage un cas (**très très fréquent**) où le push **ne peut pas se faire** avant que l'on ne fasse d'abord un `pull`
 
-<video width="800px" controls src="_static/NeedPull.mp4" type="video/mp4"></video>
+```{code-cell}
+:hide_input: true
+:tags: [hide-input]
 
-+++
+%%python
+from ipywidgets import Video
+Video.from_file("_static/NeedPull.mp4")
+```
 
 ## conclusion
 
