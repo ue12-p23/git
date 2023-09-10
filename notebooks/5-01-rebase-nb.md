@@ -77,12 +77,20 @@ ce qui change c'est l'absence de "diamant", on peut de cette façon garder un hi
 
 du coup, si on revient sur notre approximation comme quoi
 
-<span class=frame><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></span>
+````{admonition} pull
+:class: note
 
-eh bien on pourrait se dire, oui mais pourquoi pas alors avoir envie de faire plutôt un `rebase` plutôt qu'un `merge` ici ?
+`git pull` = `git fetch` + `git merge`
+````
 
+eh bien on pourrait se dire, oui mais pourquoi pas alors avoir envie de faire plutôt un `rebase` plutôt qu'un `merge` ici ?  
 et en effet c'est possible, car
-<span class=frame><code>git pull --rebase</code> = <code>git fetch</code> + <code>git rebase</code></span>
+
+````{admonition} pull --rebase
+:class: note
+
+`git pull --rebase` = `git fetch` + `git rebase`
+````
 
 +++ {"tags": ["level_intermediate"]}
 

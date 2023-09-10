@@ -38,7 +38,7 @@ HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/
 
 jusqu'ici on a abordé `git` du point de vue "usage local"; on a créé tous nos commits et branches nous-mêmes, on n'a eu à aucun moment besoin du réseau.
 
-Notez que même dans ce cadre délibérément limité, `git` remplit déjà plein de fonctions super utiles :
+notez que même dans ce cadre délibérément limité, `git` remplit déjà plein de fonctions super utiles :
 
 * les commits sont des sauvegardes, si on s'embrouille à un moment on peut facilement revenir à un état stable
 * on a une trace structurée de tous les changements, par qui, quand, pourquoi
@@ -54,7 +54,11 @@ mais bien sûr, on l'a vu dans les slides d'introduction, on peut aussi utiliser
 
 ![](media/kn2-synchro-overview.svg)
 
+````{admonition} le réseau
+:class: note
+
 pour ça, on va **utiliser le réseau pour synchroniser deux dépôts**
+````
 
 +++
 
@@ -67,7 +71,7 @@ nous allons les étudier pas à pas, et pour commencer **dans ce premier noteboo
 * `git clone` (pour initialiser à partir de, par exemple github)
 * `git pull` (pour mettre à jour ultérieurement)
 
-et du coup en passant on va parler aussi de `git fetch`, qui est si on veut un sous-produit de `git pull`
+et du coup en passant on va parler aussi de `git fetch` qui est, si on veut, un sous-produit de `git pull`
 
 +++
 
@@ -132,15 +136,17 @@ $ git remote get-url origin
 https://github.com/ue12-p23/git-sandbox
 ```
 
-<div class=note>
++++ {"tags": ["level_intermediate"]}
+
+````{admonition} le nom origin
+:class: note
 
 le remote `origin` est créé par `git clone`  
 c'est pourquoi lorsqu'on procède dans l'autre sens (un repo créé localement qu'on veut pousser sur github),
 la formule proposée par github comporte justement la création manuelle du remote origin
 
 ![](media/git-remote-add.png)
-
-</div>
+````
 
 +++
 
@@ -159,7 +165,12 @@ on regarde son fonctionnement illustré dans une vidéo (dans le prolongement du
 <video width="800px" controls src="_static/Pull.mp4" type="video/mp4"></video>
 
 pour résumer, on peut dire que
-<span class=frame><code git pull</code> = <code>git fetch</code> + <code>git merge</code></span>
+
+````{admonition} pull
+:class: note
+
+`git pull` = `git fetch` + `git merge`
+````
 
 +++
 

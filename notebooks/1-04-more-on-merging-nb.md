@@ -54,7 +54,7 @@ un commit qui **contienne à la fois le code courant et celui du commit `to-merg
 
 (que comme d'habitude on peut exprimer comme un nom de branche, un SHA1, le résultat d'une navigation avec les opérateurs `~` et `^`, etc…)
 
-+++ {"tags": ["framed_cell"]}
++++ {"tags": []}
 
 ````{note}
 on rappelle aussi d'ailleurs, dans un autre registre, qu'il est sage de lancer la commande `git merge` **dans un dépôt  propre**, sans modifications pendantes

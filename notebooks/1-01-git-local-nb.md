@@ -1188,9 +1188,10 @@ $ git lg
 
 C'est plus pratique, pour la rédaction de ce cours, d'utiliser ce type de notation plutôt que d'insérer un SHA-1 en dur, parce qu'entre votre dépôt et le mien, les commits n'ayant pas été créés à la même date, ils n'ont pas le même SHA-1; donc si je veux écrire un script qui revient d'un commit en arrière et qui marche chez tout le monde, je vais utiliser `HEAD~` plutôt que `e2c02ca`.
 
-+++ {"tags": ["framed_cell"]}
++++
 
-**exercice**
+````{admonition} exercice
+:class: seealso
 
 Entrainez-vous à utiliser ce mécanisme en conjonction avec `git log`
 
@@ -1201,6 +1202,7 @@ Entrainez-vous à utiliser ce mécanisme en conjonction avec `git log`
 Vous remarquez que lorsqu'on passe, à `git log`, l'avant-avant-dernier commit (`git log --oneline main~2` ou `git log --oneline HEAD~2`), on ne nous montre plus **que deux commits** ! Pas de panique, le repo n'a pas changé, il contient toujours vos 4 commits.
 
 **Mais** comme on indique à `git log` de parcourir de repo en commençant par le deuxième commit, eh bien comme corollaire de ce qu'on a vu plus haut (avec le graphe de parent et comment il est orienté), ce parcours-là ne peut découvrir que 2 commits.
+````
 
 +++ {"tags": ["level_advanced"]}
 
@@ -1487,13 +1489,17 @@ c'est ici que vous pouvez commencer à voir en pratique l'intérêt de la notion
 
   est toujours à l'oeuvre à l'identique
 
-+++ {"tags": ["framed_cell"]}
++++
+
+````{admonition} exercice
+:class: seealso
 
 exercice: on enleve le `--all` de la commande. Que remarquez vous ?
 
 d'après vous, pourquoi ça se comporte comme ça ?
 
 ![](media/term-log-fork.png)
+````
 
 +++
 
