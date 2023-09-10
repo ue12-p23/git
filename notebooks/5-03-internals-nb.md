@@ -33,7 +33,7 @@ HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/
 
 +++
 
-ce notebook est **optionnel**
+ce notebook est complètement **optionnel**
 
 on s'intéresse à la façon dont les commits sont stockés dans le repository  
 on n'a **pas du tout besoin** de savoir ça pour utiliser `git` pleinement, mais cela pourra peut-être satisfaire la curiosité de certains

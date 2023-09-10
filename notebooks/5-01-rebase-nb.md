@@ -23,7 +23,9 @@ from IPython.display import HTML
 HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
 ```
 
-# `rebase` (optionnel)
+# rebase
+
+ce notebook est complètement **optionnel**
 
 +++
 
