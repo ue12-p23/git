@@ -40,7 +40,7 @@ revenons sur une opération utile **en local**
 
 il s'agit de `rebase`, qui est en quelque sorte une alternative à `merge`, mais **pour fabriquer un historique plus linéaire**
 
-voyons ça sur un exemple astrait; voici pour commencer le résultat d'un merge dans une situation typique; on n'est pas dans un *fast-forward*, le merge fabrique donc un commit de fusion, on a compris comment ça marche (on suppose ici qu'il n'y a pas de conflits naturellement)
+voyons ça sur un exemple abstrait; voici pour commencer le résultat d'un merge dans une situation typique; on n'est pas dans un *fast-forward*, le merge fabrique donc un commit de fusion, on a compris comment ça marche (on suppose ici qu'il n'y a pas de conflits naturellement)
 
 ![](media/kn-merge.svg)
 
