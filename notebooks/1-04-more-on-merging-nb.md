@@ -208,7 +208,7 @@ sauriez-vous simuler ce scénario ?
 pour McGonagall, c'est simple, comme on est sur main il suffit de modifier `form.txt` (1ère version, note 12) et de commiter
 
 ```bash
-cp form-mcdonagall.txt
+cp form-mcdonagall.txt form.txt
 git add form.txt
 git commit -m"notes mcgonagall"
 ```
