@@ -7,7 +7,7 @@
  .myst * + ul {
      margin-top: initial !important;
  }
-/* a paragraph that is just above a list should not have a bottom margin 
+/* a paragraph that is just above a list should not have a bottom margin
  * thanks SO
  * https://stackoverflow.com/questions/1817792/is-there-a-previous-sibling-selector
  */
