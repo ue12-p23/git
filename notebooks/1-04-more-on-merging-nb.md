@@ -23,7 +23,7 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Valérie Roy
 ```{code-cell}
 %%python
 from IPython.display import HTML
-HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/style.html")
+HTML(filename="_static/style.html")
 ```
 
 # la fusion, et les conflits
