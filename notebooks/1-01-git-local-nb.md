@@ -240,7 +240,10 @@ git init --help
 
 ![](media/term-init-help.png)
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
+
+````{admonition} ça fait quoi au juste "git init" ?
+:class: dropdown seealso
 
 Souvent à ce stade, les gens déjà exposés à l'informatique se demandent: *mais bon sang mais qu'est-ce ça fait au juste ce `git init` ?*  
 si c'est votre cas et pour satisfaire votre curiosité, tapez d'abord `ls` pour voir le contenu du dossier courant
@@ -266,6 +269,7 @@ qui nous montre plusieurs entrées de plus que `ls` tout court:
 mais maintenant que vous avez vu ce répertoire `.git`, on **l'oublie entièrement**, car ce n'est qu'un détail d'implémentation qui n'a aucune importance surtout à notre niveau actuel.
 
 il est beaucoup plus important de se familiariser avec le modèle mental des objets de `git`, que de savoir en détail comment tout ça est rangé sur le disque
+````
 
 +++
 
@@ -689,20 +693,24 @@ Pour chaque commit, vous avez:
   - la date du commit
   - le message
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ## identifiant d'un commit: le `SHA-1`
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 On parle rapidement de l'identifiant d'un commit comme `34269b459201f87b65e7c47b89c93a99a8c0b4e6`
 
 * il doit être **unique** dans un projet
 * on doit pouvoir faire des très nombreux commits dans un projet qui peut durer des années.
 
-Ils ont choisi de prendre des entiers écrits en base `16` et en codage hexadécimal, on utilise les 16 chiffres `0`, `1`, ..., `9`, `a`, `b`, `c`, `d`, `e`, `f` où `a = 10` et `f = 15` (ainsi par exemple `FF = 15*16 + 15 = 255` et oui on peut utiliser des miniscules ou des majuscules).
+On a choisi de prendre des entiers écrits en base `16` et en codage hexadécimal
+Avec lequel, comme vous le savez (?), on utilise les 16 chiffres `0`, `1`, ..., `9`, `a`, `b`, `c`, `d`, `e`, `f` où `a = 10` et `f = 15` (ainsi par exemple `FF = 15*16 + 15 = 255`), et oui on peut utiliser des miniscules ou des majuscules.
 
 Comme vous le voyez, cet identifiant est assez long (40 chiffres hexadécimaux) cela afin d'assurer de son unicité. Il s'appelle le **hash** du commit, ou encore son **sha1** - prononcer *chat-ouane* - c'est le petit nom de la fonction de hachage qui est utilisée ici
+
+````{admonition} un peu de combinatoire
+:class:dropdown seealso
 
 On calcule rapidement:
   - un caractère hexadécimal a 16 valeurs, il se code sur 4 bits ($2^4$)
@@ -715,6 +723,7 @@ Maintenant, quand on a besoin de désigner un commit (sur la ligne de commande),
 c'est d'ailleurs ce que fait `git log`, et ça rend le listing beaucoup plus digeste
 
 C'est vrai que $2^{7*4} = 2^{28}$ = 268.435.456, le nombre de suites de 7 digits hexadécimaux, c'est déjà assez grand pour que les conflits soient rares.
+````
 
 +++
 
@@ -809,9 +818,11 @@ $ git commit -m"première implémentation de factorielle dans le fichier fact.py
 
 Nous voyons qu'un fichier a été créé dans le repo pour `fact.py`
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
+````{admonition} note
 N'essayez pas de comprendre le nombre qui apparaît après `create mode` là ca veut simplement dire que `fact.py` est un `Regular non-executable file`.
+````
 
 +++
 
@@ -1226,14 +1237,17 @@ Vous remarquez que lorsqu'on passe, à `git log`, l'avant-avant-dernier commit (
 **Mais** comme on indique à `git log` de parcourir de repo en commençant par le deuxième commit, eh bien comme corollaire de ce qu'on a vu plus haut (avec le graphe de parent et comment il est orienté), ce parcours-là ne peut découvrir que 2 commits.
 ````
 
-+++ {"tags": ["level_advanced"]}
++++ {"tags": [], "cell_style": "split"}
+
+````{admonition} pour naviguer dans les branches
+:class: dropdown seealso
 
 Nous avons vu qu'un commit peut avoir deux parents. Avec `~` on ne peut pas atteindre le second parent. Cela se fera fait en  utilisant `^`.
 
 `^` est un peu particulier:
 
 * `HEAD^`, il se trouve, désigne aussi, le premier parent
-* `HEAD^2` va désigner le second parent de `HEAD`
+* `HEAD^2` va désigner le second parent de `HEAD` (il faut donc que `HEAD` ait au moins deux parents)
 * `HEAD^^` va désigner le parent du parent de `HEAD` - qui se lit `(HEAD^)^`
 * dans `HEAD^^2` - qui se lit `(HEAD^)^2` : avec `HEAD^` on va au premier parent puis, de là, on va au deuxième parent avec `^2`
 * alors que `HEAD^2^` se lit `(HEAD^2)^`
@@ -1241,8 +1255,6 @@ Nous avons vu qu'un commit peut avoir deux parents. Avec `~` on ne peut pas atte
 Et pourquoi ont-ils eu besoin de `~` parce que `HEAD~8` est plus simple à écrire que `HEAD^^^^^^^^`.
 
 Nous pourrons ainsi naviguer dans les graphes, par exemple:
-
-+++ {"tags": ["level_advanced"], "cell_style": "split"}
 
 * `HEAD~2` désigne le parent du parent de `HEAD`
 * `HEAD^2` désigne le deuxième parent de `HEAD`
@@ -1254,9 +1266,8 @@ autrement dit,
 
 ce qui est illustré sur cette figure
 
-+++ {"tags": ["level_advanced"], "cell_style": "split"}
-
 ![](media/kn-commit-navigation.svg)
+````
 
 +++
 
@@ -1432,22 +1443,25 @@ Donc ce qu'il faut remarquer, c'est
 * la référence **`HEAD`** désigne maintenant notre **avant-dernier commit**
 mais sinon bien entendu aucune branche n'a bougé
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
+
+````{admonition} git switch -c
+:class: note
 
 pour information, la séquence qui consiste à
 
 * créer une nouvelle branche
 * et l'adopter comme branche courante
 
-est naturellement assez fréquente, et dans la pratique on utilise un raccourci qui est
+est bien entendu assez fréquente, et dans la pratique on utilise un raccourci qui est
 
 ```
 git switch -c la-nouvelle-branche le-commit
 ```
 
-qui fait d'un seul coup le `git branch` et le `git switch`
-
-Dans notre cas nous aurions fait `git switch -c devel HEAD~`
+qui fait d'un seul coup le `git branch` et le `git switch`  
+et donc dans notre cas, nous aurions pu faire `git switch -c devel HEAD~`
+````
 
 +++
 
@@ -1529,13 +1543,13 @@ d'après vous, pourquoi ça se comporte comme ça ?
 
 +++
 
-nous allons pouvoir conclure ce scénario, avec la fusion des deux branches
+nous allons pouvoir conclure ce scénario, avec la **fusion** (le *merge*) des deux branches
 
 ce qu'on cherche à faire, c'est de créer **un commit unique** qui **mélange les changements** qu'on a pu faire **sur les deux branches**
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
-quelques précisions :
+````{admonition} quelques précisions
 
 * ici pour la simplicité du scénario, chacun des deux chemins n'implique qu'un seul commit, mais ce n'est pas du tout une limitation
 * les commits pourraient aussi bien concerner plein de fichiers, avec des renommages, des ajouts, des suppressions de fichier, la mécanique est la même
@@ -1544,6 +1558,7 @@ quelques précisions :
 * dans ce cas on dit qu'**il y a un conflit** au moment de la fusion (merge)
 
 nous ici on s'est arrangés (en modifiant des fichiers différents) pour que ça ne nous arrive pas; mais on en reparlera plus tard
+````
 
 +++
 
@@ -1610,7 +1625,23 @@ git diff devel main
 
 ![](media/term-diff-devel-main.png)
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
+
+````{admonition} octopus merge
+
+pour information, on peut même donner à `git merge` plusieurs commits; si on tape par exemple
+
+```console
+git merge commit1 commit2 commit3
+```
+
+on va créer un commit qui aura 4 parents, dans l'ordre le commit courant, puis `commit1`, `commit2` et `commit3`; une fusion de plus de deux branches d'appelle un *octopus-merge*
+````
+
++++ {"tags": []}
+
+````{admonition} pour les curieux
+:class: dropdown attention
 
 pour les curieux, je vous invite à vérifier que tout s'est bien passé; et pour ça on peut utiliser `git diff` à nouveau, mais entre plusieurs commits (faire `git diff --help` pour plus d'information)
 
@@ -1624,16 +1655,7 @@ git diff HEAD~2 HEAD^2
 ```
 
 donnent les mêmes résultats; pourquoi ?
-
-+++ {"tags": ["level_advanced"]}
-
-pour information, on peut même donner à `git merge` plusieurs commits; si on tape par exemple
-
-```console
-git merge commit1 commit2 commit3
-```
-
-on va créer un commit qui aura 4 parents, dans l'ordre le commit courant, puis `commit1`, `commit2` et `commit3`; une fusion de plus de deux branches d'appelle un *octopus-merge*
+````
 
 +++
 

@@ -103,7 +103,7 @@ la différence apparait maintenant dans la deuxième zone (*staged changes*)
 
 on crée le commit sur la base du contenu de l'index, du coup les deux (l'index et le dernier commit) sont maintenant égaux
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### pour revenir en arrière
 
@@ -127,7 +127,7 @@ typiquement, on met en chantier une feature, et au bout d'une heure on se dit, n
 
 ou encore, pendant le debug on a ajouté 250 instructions `print()`, qu'on veut enlever; plutôt que de les enlever une par une, c'est plus malin de mettre les changements utiles dans l'index, et de jeter les autres différences
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 #### `git reset`
 
@@ -135,7 +135,7 @@ pour annuler le `add` : si un changement a été promu dans l'index, on peut le
 
 ![](media/kn-lifecycle-6-reset.svg)
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 #### `git restore --`
 
@@ -143,7 +143,7 @@ pour jeter les changements non indexés
 
 ![](media/kn-lifecycle-7-restore.svg)
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 #### `git reset --hard`
 
@@ -151,7 +151,7 @@ pour se mettre inconditionnellement sur un commit, avec un dépôt propre
 
 ![](media/kn-lifecycle-8-reset-hard.svg)
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### refaire un commit avec `git commit --amend`
 
@@ -187,7 +187,7 @@ si bien que, selon le cas qui vous concerne parmi ceux listés plus haut, vous p
   
 remarquez qu'on ne modifie pas le commit courant (les commits sont immutables), on en crée simplement un nouveau (le premier reste dans le repo, mais s'il est inatteignable, il sera nettoyé au bout de quelque temps)
 
-+++ {"tags": ["level_basic"]}
++++ {"tags": []}
 
 ## utiliser une GUI
 

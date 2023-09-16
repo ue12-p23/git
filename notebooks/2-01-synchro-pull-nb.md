@@ -139,7 +139,7 @@ interprétons cette réponse sybilline :
 
 dans notre cas, ce dépôt, c'est bien sûr celui sur github - ça pourrait être quoi d'autre ?
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 d'ailleurs pour vérifier on peut faire
 
@@ -148,7 +148,7 @@ $ git remote get-url origin
 https://github.com/ue12-p23/git-sandbox
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ````{admonition} le nom origin
 :class: note
@@ -225,12 +225,15 @@ il faut insister sur le fait que c'est une **information locale** et que c'est d
 
 dit autrement, si vous ne faites jamais ni `git pull` ni `git fetch` pendant un mois, vous aurez toujours `origin/main` qui pointe dans votre dépôt au même endroit, alors que sur github la branche aura sans doute avancé...
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
-**Note**
+````{admonition} note
+:class: note
+
 en pratique on fait plus souvent `git pull` que `git fetch`, car bien sûr souvent ce qu'on veut faire c'est se mettre à jour; et mon opinion c'est que c'est un peu dommage, car le fait de faire d'abord `fetch` permet de bien évaluer l'impact que va avoir le `pull` (notamment : est-ce un fast-forward ?)
 
 une fois qu'on a dit ça, si vous utilisez une GUI comme `Sourcetree` ou `GitKraken` ou autre, il y a de fortes chances qu'elle fasse pour vous un `git fetch` **automatiquement** - genre toutes les 5 minutes; c'est très pratique car ça permet, justement, de recevoir des notifications lorsqu'il y a du nouveau dans le dépôt *upstream*
+````
 
 +++
 
@@ -257,7 +260,7 @@ from ipywidgets import Video
 Video.from_file("_static/PullDiverge.mp4", autoplay=False)
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### quelques détails
 
@@ -268,8 +271,12 @@ sachez que dans des configurations plus complexes on doit bien entendu préciser
 * `git pull` est en réalité un raccourci pour `git pull origin`  
   ou encore `git pull origin main` puisqu'on est sur la branche main
 
-+++ {"tags": ["level_advanced"]}
++++ {"tags": []}
+
+````{admonition} pour les très avancés
+:class: seealso
 
 pour les très avancés, signalons enfin la notion de *tracking branch*  
 il y a quelque part dans la configuration du dépôt une information qui lie la branche locale `main` à la branche distante `main` du *remote* `origin`  
 grâce à cela, on n'a pas besoin d'être plus explicite, et quand on tape juste `git pull` on merge `origin/main` dans `main`
+````

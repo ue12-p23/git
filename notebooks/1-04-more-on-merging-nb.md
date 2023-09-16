@@ -91,13 +91,17 @@ alors on est dans un *fast-forward*, il n'est **pas besoin de créer** un commit
 
 ici dans le premier exemple on avait `to-merge=C → B → HEAD=A`, donc pas besoin de créer un commit, simplement besoin d'avancer la branche courante
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
+
+````{admonition} dans l'autre sens
+:class: dropdown seealso
 
 juste pour la curiosité, le cas se présente assez peu en pratique, mais que se passe-t-il d'après vous lorsque dans l'autre sens, on essaie de fusionner un parent ?
 
 ![](media/kn-merge-anti-fast-forward.svg)
 
 la réponse : rien du tout ! pourquoi ?
+````
 
 +++
 
@@ -107,11 +111,15 @@ dans tous les autres cas  - c'est-à-dire quand il **n'existe pas de lien de par
 
 pour réaliser ça, git a recours à des outils tiers (`diff` et `diff3`) qui reposent sur le fait que **les contenus sont textuels**
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
+
+````{admonition} le contenu binaire
+:class: attention
 
 Le plus souvent, les projets qui utilisent `git` sont de nature très majoritairement textuelle (code, données, lois, etc..);
 
 on y trouve fréquemment **aussi** des artefacts sous la forme de contenu binaire, comme du pdf, des images, du son, de la vidéo; pas de souci pour ajouter ce genre de contenus dans git, mais ses capacités pour fusionner de tels documents sont pauvres, voire nulles, sauf à paramétrer en profondeur un workflow *ad hoc*.
+````
 
 +++
 
@@ -127,7 +135,7 @@ qui est de niveau intermédiaire, et de passer directement au résumé
 vous pourrez vous y reporter plus tard, lorsque vous aurez besoin de gérer un conflit…
 ````
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ## mon premier conflit
 
@@ -139,11 +147,11 @@ allons-y, on va provoquer cette situation en pratique :
 * on va créer deux branches distinctes qui touchent au même endroit du fichier
 * du coup la fusion va échouer en signalant un conflit
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### préparation
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 * je commence par créer un dépôt *ad hoc*; on a vu déjà toutes ces commandes :
 
@@ -172,11 +180,11 @@ git add form.txt
 git commit -m"le formulaire vierge"
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### les deux branches
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ce qu'on veut faire, c'est simuler deux changements faits en même temps par deux personnes différentes; disons qu'on a deux profs, Minerva McGonagall et Albus Dumbledore, qui remplissent chacun leur partie
 
@@ -189,19 +197,19 @@ Ils partent donc tous les deux du formulaire vide, ils remplissent chacun leur p
 
 ```{code-cell}
 :cell_style: split
-:tags: [level_intermediate]
+:tags: []
 
 !cat form-mcgonagall.txt
 ```
 
 ```{code-cell}
 :cell_style: split
-:tags: [level_intermediate]
+:tags: []
 
 !cat form-dumbledore.txt
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 sauriez-vous simuler ce scénario ?
 
@@ -213,7 +221,7 @@ git add form.txt
 git commit -m"notes mcgonagall"
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 pour la deuxième version, on a besoin de créer la branche `dumbledore` et de revenir en arrière; on peut faire en un seul coup avec le raccourci `git switch -c`  
    ```bash
@@ -230,7 +238,7 @@ pour rappel, on peut aussi décomposer, le faire en deux fois: créer la branche
   ```
 ````
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 à ce stade, le formulaire est à nouveau vide (car on est revenu en arrière)
 
@@ -243,7 +251,7 @@ git add form.txt
 git commit -m"notes dumbledore"
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 et à ce stade le repo ressemble à ceci
 
@@ -257,11 +265,11 @@ $ git log --all --graph --oneline
 * 6f201cc le formulaire vierge
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### le merge
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 à ce stade on a le choix :
 
@@ -275,7 +283,7 @@ $ git switch main
 Switched to branch 'main'
 ```
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 on peut maintenant essayer de fusionner
 ```bash
@@ -287,7 +295,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 ouh là, il n'a pas l'air content !
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ce qui se passe, c'est ceci
 
@@ -297,7 +305,7 @@ ce qui se passe, c'est ceci
 * par contre comme les deux branches ont modifié la ligne de total chacune de leur côté  
   **la fusion ne sait pas quelle version retenir**
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 voilà, on a créé **un conflit**  
 du coup **tout s'arrête**…  
@@ -327,7 +335,7 @@ dans quel état est notre dépôt à ce stade ?
   ```console
   <<<<<<< HEAD
   total        : 12
-  =======
+  ⩶⩶
   total        : 15
   >>>>>>> dumbledore
   ```  
@@ -335,7 +343,7 @@ dans quel état est notre dépôt à ce stade ?
 * noter enfin qu'à ce stade, on ne **peut plus** utiliser la commande `git commit` pour créer un nouveau commit  
   il faut d'abord retourner dans un état propre: **nettoyer le repo**
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### nettoyer (1): revenir en arriére
 
@@ -350,12 +358,12 @@ pour cela, on a principalement deux choix :
   ```
   ouf, on a **tout effacé**, on est exactement **comme avant le merge**
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### nettoyer (2): résoudre le conflit
 2. soit on décide de gérer, c'est-à-dire de passer sur les conflits (nous on n'en a qu'un) et de décider quoi faire;
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 faisons-le; nous ici on veut dire que le total, ça n'est ni 12 ni 15, mais 27
 
@@ -369,7 +377,7 @@ la mauvaise nouvelle, c'est qu'aucune des deux ne convient, et ce qu'on va faire
 
 ![](media/vscode-conflict-solved.png)
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
 à ce stade :
 
@@ -389,6 +397,7 @@ la mauvaise nouvelle, c'est qu'aucune des deux ne convient, et ce qu'on va faire
   ```
   
 * et tout le monde est content
+  
   ```console
   git log --oneline --graph
 
@@ -401,21 +410,25 @@ la mauvaise nouvelle, c'est qu'aucune des deux ne convient, et ce qu'on va faire
 
   * 2230fb9 le formulaire vierge
   ```
+  
   et
+  
   ```console
   git status
   On branch main
   nothing to commit, working tree clean  git log --
   ```
+  
   et
+  
   ```
   cat form.txt
   prof #1 Nom  : McGonagall
   prof #1 Note : 12
-  ---
+  ‒‒‒
   prof #2 Nom  : Dumbledore
   prof #2 Note : 15
-  ---
+  ‒‒‒
   total        : 27
   ```
 

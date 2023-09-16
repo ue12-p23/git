@@ -92,13 +92,17 @@ et en effet c'est possible, car
 `git pull --rebase` = `git fetch` + `git rebase`
 ````
 
-+++ {"tags": ["level_intermediate"]}
++++ {"tags": []}
 
-il y a même une variable de configuration pour cela, et c'est pour ça qu'on vous a peut-être fait faire à un moment
+````{admonition} note
+:class: attention
+
+il y a même une variable de configuration pour cela, et c'est pour ça qu'on vous a sans doute fait faire à un moment
 
 ```bash
 git config --global pull.rebase false
 ```
+````
 
 +++
 
