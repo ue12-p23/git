@@ -446,7 +446,7 @@ $ ls
 
        # mais en fait non, dans ce simple commit on a tout
        # ce qu'il faut pour remettre les choses en état
-$ git restore -- readme.md licence.txt
+$ git restore readme.md licence.txt
 
        # et voilà
 $ ls

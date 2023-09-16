@@ -137,7 +137,7 @@ pour annuler le `add` : si un changement a été promu dans l'index, on peut le
 
 +++ {"tags": []}
 
-#### `git restore --`
+#### `git restore`
 
 pour jeter les changements non indexés
 
