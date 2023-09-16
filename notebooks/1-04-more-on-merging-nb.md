@@ -199,14 +199,14 @@ Ils partent donc tous les deux du formulaire vide, ils remplissent chacun leur p
 :cell_style: split
 :tags: []
 
-!cat form-mcgonagall.txt
+cat form-mcgonagall.txt
 ```
 
 ```{code-cell}
 :cell_style: split
 :tags: []
 
-!cat form-dumbledore.txt
+cat form-dumbledore.txt
 ```
 
 +++ {"tags": []}
