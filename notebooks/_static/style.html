@@ -2,38 +2,20 @@
 <style>
 
 
- .rendered_html * + ol,
- .rendered_html * + ul {
+ .myst * + ol,
+ .myst * + ul {
      margin-top: initial !important;
  }
 
 
- 
-
-div.cell div.cell_output .output pre {
-    background-color: #fee;
+ .myst p:has(+ ol),
+ .myst p:has(+ ul) {
+    margin-bottom: initial !important;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+div.cell div.cell_output .output pre {
+    background-color: #fee;
+}
 </style>
