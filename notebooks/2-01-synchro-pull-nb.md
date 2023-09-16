@@ -28,6 +28,11 @@ HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/
 
 # synchro entre dépôts : tirer
 
+````{note}
+ce notebook contient des vidéos; si vous le lisez dans Jupyter, pour que les vidéos s'affichent:  
+assurez-vous d'exécuter toutes les cellules avec *Run* -> *Run All Cells*
+````
+
 +++
 
 ## on contextualise
@@ -85,7 +90,7 @@ on a déjà parlé de cette commande, c'est celle qui permet en partant de rien,
 
 %%python
 from ipywidgets import Video
-Video.from_file("_static/Clone.mp4")
+Video.from_file("_static/Clone.mp4", autoplay=False)
 ```
 
 * dans un premier temps on duplique le graphe des commits, y compris le commit courant
@@ -175,7 +180,7 @@ on regarde son fonctionnement illustré dans une vidéo (dans le prolongement du
 
 %%python
 from ipywidgets import Video
-Video.from_file("_static/Pull.mp4")
+Video.from_file("_static/Pull.mp4", autoplay=False)
 ```
 
 pour résumer, on peut dire que
@@ -249,7 +254,7 @@ la troisième chose à retenir est que, puisque `pull` finit par faire un `merge
 
 %%python
 from ipywidgets import Video
-Video.from_file("_static/PullDiverge.mp4")
+Video.from_file("_static/PullDiverge.mp4", autoplay=False)
 ```
 
 +++ {"tags": ["level_intermediate"]}

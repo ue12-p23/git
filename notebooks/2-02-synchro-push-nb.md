@@ -28,6 +28,11 @@ HTML(url="https://raw.githubusercontent.com/ue12-p23/git/main/notebooks/_static/
 
 # synchro entre dépôts : pousser
 
+````{note}
+ce notebook contient des vidéos; si vous le lisez dans Jupyter, pour que les vidéos s'affichent:  
+assurez-vous d'exécuter toutes les cellules avec *Run* -> *Run All Cells*
+````
+
 +++
 
 ## on contextualise
@@ -80,7 +85,7 @@ cette vidéo décortique le fonctionnement de `push` dans un cas simple
 
 %%python
 from ipywidgets import Video
-Video.from_file("_static/Push.mp4")
+Video.from_file("_static/Push.mp4", autoplay=False)
 ```
 
 ## mais attention le push peut coincer !!!
@@ -93,7 +98,7 @@ dans la suite de la vidéo on envisage un cas (**très très fréquent**) où le
 
 %%python
 from ipywidgets import Video
-Video.from_file("_static/NeedPull.mp4")
+Video.from_file("_static/NeedPull.mp4", autoplay=False)
 ```
 
 ## conclusion
