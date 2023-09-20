@@ -151,6 +151,20 @@ pour se mettre inconditionnellement sur un commit, avec un dépôt propre
 
 ![](media/kn-lifecycle-8-reset-hard.svg)
 
++++
+
+````{admonition} tout avec git restore
+:class: dropdown note
+
+en fait on peut faire toutes ces commandes avec seulement `git restore` avec les options idoines
+
+| quoi | illustrations | avec restore |
+|-:|:-:|:-|
+| défaire un add | git reset | git restore --staged |
+| jeter les changements non indexés | git restore | git restore --worktree |
+| défaire les deux familles de changements | git reset --hard | git restore --staged --worktree |
+````
+
 +++ {"tags": []}
 
 ### refaire un commit avec `git commit --amend`

@@ -205,7 +205,11 @@ git version 2.30.1
 ```
 
 si vous n'avez pas exactement la même version, aucun souci, on n'utilisera aucune fonction avancée ni récente de `git`, donc plus ou moins toutes les versions de `git` conviennent pour ce cours.  
-(**NOTE** faites-vous connaitre toutefois si vous n'avez pas au moins la version **2.23**, car la fonction `git switch` n'est disponible qu'à partir de cette version-là; on peut la substituer par certaines formes de `git checkout`, mais c'est moins logique à retenir...)
+
+````{admonition} moins que 2.23 ?
+:class: note dropdown
+faites-vous connaitre si vous n'avez pas au moins la version **2.23**, car la fonction `git switch` n'est disponible qu'à partir de cette version-là; on peut la substituer par certaines formes de `git checkout`, mais c'est moins logique à retenir...
+````
 
 +++
 
@@ -284,6 +288,17 @@ git status
 ```
 
 ![](media/term-status-red.png)
+
+````{admonition} raccourcis
+:class: seealso dropdown
+lors des installations on vous a fait faire 
+```bash
+git config --global alias.l "log --oneline --graph"
+git config --global alias.la "log --oneline --graph --all"
+git config --global alias.s "status"
+```
+et après cela vous pouvez taper juste `git s` comme un raccourci de `git status`
+````
 
 +++
 
@@ -369,7 +384,7 @@ git add licence.txt
 vous devez voir :
 
 * qu'on n'a toujours pas de commit, bien sûr
-* que les deux fichiers fichiers apparaissent maintenant en vert dans la section *Changes to be committed*
+* que les deux fichiers apparaissent maintenant en vert dans la section *Changes to be committed*
 * et enfin qu'il n'y a plus de *untracked files*
 
 ![](media/term-status-green.png)
@@ -393,19 +408,40 @@ Dans notre cas donc, notre premier commit va contenir les deux fichiers.
 
 +++
 
+### le message 
+
 Il va nous falloir **fournir un message** qui explique à quoi correspond ce commit. Ce message est **d'autant plus important** qu'il va nous servir à repérer l'idée derrière ce commit (*pourquoi on l'a fait*).
 Pour l'instant restons bêtement simple, par exemple nous allons mettre un message qui dit juste `licence+readme`.
 Nous reviendrons ultérieurement sur les bonnes pratiques pour rédiger ces messages, mais une chose à la fois...
 
 Donc nous y voilà, `git` a une commande `commit`, pour créer un commit; pour lui indiquer quel message mettre dans le commit, on peut soit :
 
-* lancer juste `git commit`, et dans ce cas-là un éditeur de code va se lancer automatiquement; on est censé écrire le message dans le fichier, puis sauver et quitter; le truc c'est que vous n'êtes pas forcément confortable avec l'éditeur par défaut (notamment si c'est `vi` qui est notoirement cryptique); notez aussi qu'on peut choisir, une bonne fois pour toutes,
-un autre éditeur comme par exemple `nano` avec la commande `git config --global
-core.editor "nano"`
+* lancer juste `git commit`, et dans ce cas-là git va lancer un éditeur de code pour vous permettre de rédiger ce message; si vous avez bien fait la configuration faite pendant la séance d'installations au tout début de l'année, ce sera vs-code, et dans ce cas il vous faut:
+  * bien sûr écrire le message (les lignes avec un `#` sont ignorées)
+  * sauver le fichier en question
+  * et pour valider: **fermer l'onglet** de vs-code - typiquement avec la petite croix, comme ceci
+ 
+  ![](media/vscode-edit-message.png)
 
-* donc pour l'instant on va laisser cette option-là de coté, et indiquer le message à `git commit` directement **sur la ligne de commande** avec l'option `-m`; et en plus depuis le notebook, c'est plus simple aussi de donner le commentaire sur la ligne de commande.
+  et dès que vous avez fait tout cela, la commande dans le terminal - qui est restée bloquée en attendant le message - va continuer son travail et vous rendre la main
+
+* du coup comme c'est un peu complexe, pour l'instant on va laisser cette option-là de coté, et indiquer le message à `git commit` directement **sur la ligne de commande** avec `git commit -m`
+
+````{admonition} à propos de l'éditeur
+:class: note dropdown
+
+au moment du commit, on est censé écrire le message dans le fichier, puis sauver et quitter; si vous n'avez pas bien fait la configuration que l'on préconise, vous allez tomber sur un éditeur bizzare !
+
+si c'est le cas il faut que vous tapiez ceci dans votre terminal
+
+```bash
+git config --global core.editor "code --wait"
+```
+````
 
 +++
+
+### on y va
 
 ce qui donne ceci, pour créer notre premier commit
 
@@ -431,15 +467,17 @@ N'essayons pas de comprendre les messages trop cryptiques, nous y reviendrons pl
 
 +++
 
-**NOTE**  
-Attention, on va utiliser ici la commande `rm *` qui signifie, eh bien, de détruire tous les fichiers du répertoire courant; il va sans dire que c'est quelque chose qu'il faut **éviter de faire** dans la vraie vie; (voyez par exemple l'option `-i` de `rm` si vous devez vraiment faire une manipe de ce genre)
+````{admonition} attention !
+:class: attention
 
-Avant d'aller plus loin, et pour vous convaincre de l'intérêt d'avoir fait ce commit, imaginez qu'à ce stade vous perdez accidentellement vos fichiers (un `rm *` non-intentionnel est si vite arrivé...)
+Attention, on va utiliser ici la commande `rm` qui permet de **détruire des fichiers**; il va sans dire que c'est quelque chose qu'il faut **utiliser avec modération** dans la vraie vie !
+````
 
+Avant d'aller plus loin, et pour vous convaincre de l'intérêt d'avoir fait ce commit, imaginez qu'à ce stade vous perdez accidentellement vos fichiers 
 ```bash
        # OOPS !
        # une fausse manipe ...
-$ rm *
+$ rm readme.md licence.txt 
 
        # on dirait qu'on a tout perdu ?
 $ ls
@@ -631,7 +669,8 @@ Video.from_file("_static/NoIndex.mp4", autoplay=False)
 grâce à l'index on peut choisir quels changements mettre ou pas dans le commit :
 
 ```{code-cell}
-:tags: []
+:hide_input: true
+:tags: [hide-input]
 
 %%python
 from ipywidgets import Video
@@ -642,7 +681,7 @@ Video.from_file("_static/WithIndex.mp4", autoplay=False)
 
 +++
 
-Reprenons; à ce stade pour notre part nous allons créer un second commit avec les deux modifications - celles de `readme.md` **et** celles de `licence.txt`
+Reprenons; à ce stade nous allons créer un second commit avec les deux modifications - celles de `readme.md` **et** celles de `licence.txt`
 
 Il ne nous reste donc qu'à ajouter `licence.txt` à l'`index` où nous avions déjà ajouté `readme.md`.
 
@@ -709,8 +748,10 @@ Avec lequel, comme vous le savez (?), on utilise les 16 chiffres `0`, `1`, ..., 
 
 Comme vous le voyez, cet identifiant est assez long (40 chiffres hexadécimaux) cela afin d'assurer de son unicité. Il s'appelle le **hash** du commit, ou encore son **sha1** - prononcer *chat-ouane* - c'est le petit nom de la fonction de hachage qui est utilisée ici
 
+Sachez juste qu'on peut se contenter de quelques chiffres, car ça suffit le plus souvent à désigner un commit de manière unique; par exemple si je fais référence au commit `31c4816` c'est clairement le dernier..
+
 ````{admonition} un peu de combinatoire
-:class:dropdown seealso
+:class: dropdown seealso
 
 On calcule rapidement:
   - un caractère hexadécimal a 16 valeurs, il se code sur 4 bits ($2^4$)
@@ -737,9 +778,17 @@ Revenons à `git log`, et signalons tout de suite une présentation qui sera plu
 git log --oneline
 ```
 
+````{admonition} git l
+:class: dropdown note
+avec les raccourcis préconisés vous pouvez faire juste `git l` qui va vous donner un listing très voisin (il y a juste l'option `--graph` en plus dans cet alias)
+````
+
 ![](media/term-log-oneline.png)
 
 +++
+
+````{admonition} c'est quoi ce nom HEAD ?
+:class: dropdown seealso
 
 On voit maintenant apparaître le nom `HEAD`:
 
@@ -750,24 +799,31 @@ On voit maintenant apparaître le nom `HEAD`:
 * `HEAD` est une référence spéciale, une sorte de mot-clé,  
   qui **désigne toujours le commit courant**, i.e. celui sur lequel vous travaillez
 
-* `HEAD` donc il désigne toujours (le même commit que) la branche courante;  
-  sauf que, on le verra bientôt, on crée facilement plusieurs branches dans un repo  
+* `HEAD` donc désigne toujours (le même commit que) la branche courante, 
 
-  et donc le commit courant:
+et donc le commit courant:
 
-    * n'est *pas toujours* désigné par la référence `main`  
-      (parce que ce n'est pas toujours la branche courante),
+* est *toujours* désigné par `HEAD`
 
-    * mais il est *toujours* désigné par `HEAD`
+* et n'est *pas toujours* désigné par la référence `main`  
+  parce que, comme on va le voir, on crée facilement plusieurs branches dans un repo
+  et `main` n'est pas toujours la branche courante
+````
 
 +++
 
-Voici une illustration; on a anticipé un petit peu, on a imaginé le cas où on serait sur une branche `devel` (un peu de patience), pour montrer la logique que suivent les références lorsqu'on fait un commit :
+````{admonition}
+bref, le point important c'est que dans le listing de `git log`  
+la partie en couleur qui dit `(HEAD -> main)`  
+**nous confirme que `main` est la branche courante**
+````
+
++++ {"tags": []}
+
+Voici une illustration; on a anticipé un petit peu, on a imaginé le cas où la branche courantee est `devel` (encadrée), pour montrer la logique que suivent les références lorsqu'on fait un commit :
 
 * `HEAD` et la branche courante *avancent* pour suivre le cours du projet et désigner le dernier commit
-
-
-* alors que les autres branches quant à elles restent fixes
+* alors que toutes les autres branches (ici on n'en a qu'une) quant à elles restent fixes
 
 +++ {"cell_style": "split"}
 
@@ -775,14 +831,15 @@ Voici une illustration; on a anticipé un petit peu, on a imaginé le cas où on
 
 +++ {"cell_style": "split"}
 
-ici la branche courante est `devel` (encadrée)
-
+````{admonition} dit autrement..
+:class: dropdown seealso
 `HEAD` désigne toujours **la branche courante** (même si celle-ci ne s'appelle pas `main`)
 
-après le commit les deux sont montées
+après le commit les deux (`HEAD` et `devel`) sont montées
 
 remarquez qu'ici `main` est restée au même endroit car elle n'est **pas** la branche courante  
 `main` n'aurait pas bougé non plus même si elle avait référencé (pointé sur) le commit `C`
+````
 
 +++
 
@@ -952,6 +1009,12 @@ la commande `git diff` vient en deux versions (avec ou sans l'argument `--cached
 
 ![](media/kn-diffs.svg)
 
+````{admonition} diff --cached ou diff --staged
+:class: dropdown seealso 
+
+on peut aussi utiliser comme synonyme l'option `git diff --staged` 
+````
+
 +++
 
 Expérimentons cela
@@ -1081,12 +1144,15 @@ quoi qu'il en soit, on peut maintenant réajouter les changements, avec .. eh ou
 enfin sachez qu'on peut parfaitement ajouter/enlever dans l'index des changements au niveau de granularité de la ligne ! voici une session pour vous donner une idée;
 
 ```{code-cell}
+:hide_input: true
+:tags: [hide-input]
+
 %%python
 from ipywidgets import Video
 Video.from_file("_static/vscode-line-by-line.mp4", autoplay=False)
 ```
 
-ça n'est clairement pas crucial à ce stade de maitriser cette technique, mais sachez que c'est quelque chose que les codeurs font de manière totalement routinière, car ça permet de faire **des commits qui ont du sens**, et non pas un ramassis de modifications qui ne sont pas reliées entre elles.
+ça n'est clairement pas crucial à ce stade de maitriser cette technique, mais sachez que c'est quelque chose que les codeurs font de manière totalement routinière, car ça permet de faire **des commits qui ont du sens**, et non pas un ramassis de modifications qui ne sont pas reliées entre elles; on en reparlera...
 
 +++
 
@@ -1094,17 +1160,19 @@ Video.from_file("_static/vscode-line-by-line.mp4", autoplay=False)
 
 +++
 
-Maintenant qu'on a bien compris les deux classes de changements dits "pendants", nous allons créer un 4-ème commit; pour ça vous avez le choix :
+Maintenant qu'on a bien compris les deux classes de changements dits "pendants", nous allons créer un 4-ème commit; pour ça, commencez par bien mettre si il faut toutes les différences pendantes dans l'index (tout adder); puis vous avez le choix :
 
 * sur la ligne de commandes, comme on l'a fait jusqu'ici
-
-```bash
-git commit -m"une implémentation plus juste de la fonction factorielle"
-```
+  ```bash
+  git commit -m"une implémentation plus juste de la fonction factorielle"
+  ```
 
 * ou avec vs-code, si vous voulez expérimenter plus en avant l'usage de cet outil
 
 ```{code-cell}
+:hide_input: true
+:tags: [hide-input]
+
 %%python
 from ipywidgets import Video
 Video.from_file("_static/vscode-commit.mp4", autoplay=False)
@@ -1130,6 +1198,9 @@ Alors pour l'instant ça ne fait que d'ajouter une petite étoile sur le coté g
 
 +++
 
+````{admonition} raccourcis
+:class: dropdown seealso
+
 Sachez que vous pouvez (facilement) définir des raccourcis dans la configuration globale de `git`.
 
 Par exemple si je veux taper `git lg` à la place de `git log --oneline -- graph`,
@@ -1147,6 +1218,9 @@ git l
 ```
 
 ![](media/term-alias-oneline-graph.png)
+
+
+````
 
 +++
 
@@ -1168,13 +1242,19 @@ Dans ce graphe, où **`A`** est le **commit initial**, nous avons
 * `B`, `C` et `D` qui ont chacun un parent (resp. `A`, `B` et `A`)
 * `E` qui a deux parents, `C` et `D`
 
-**Note** c'est arbitraire, mais dans tout le cours, on représente les commits **les plus récents en haut**; ça correspond à la sortie par défaut de `git log`; un peu comme aussi les logiciels de messagerie, c'est pratique de voir les derniers événements en haut...
+````{admonition} les plus récents d'abord
+c'est arbitraire, mais dans tout le cours, on représente les commits **les plus récents en haut**; ça correspond à la sortie par défaut de `git log`; un peu comme aussi les logiciels de messagerie, c'est pratique de voir les derniers événements en haut...
+````
 
 +++
 
-En fait, il est très important de savoir qu'un commit est par construction **immutable**. Ça signifie qu'une fois qu'il est créé, on ne peut plus jamais le modifier. Et au moment où on le crée, on connaît ses parents, mais on ne connaît pas encore ses futurs fils.
+### les commits sont immutables !
 
-C'est pourquoi si on parcourt le graphe en partant de `E`, on peut facilement de proche en proche parcourir tous les autres commits; `E` contient les `SHA-1` de `C` et de `D`, `C` celui de `B`... En partant de `A` au contraire, on ne peut pas "remonter" dans le graphe, puisqu'il n'y a pas de référence vers ses fils (en arrière).
+En fait, il est très important de savoir qu'un commit est par construction **immutable**. Ça signifie qu'une fois qu'il est créé, on ne peut **plus jamais** le modifier. Et au moment où on le crée, on connaît ses parents, mais on ne connaît pas encore ses futurs fils. Et donc ça signifie qu'un commit connait son ou ses parent.s, mais **il ne connait pas ses fils**.
+
+C'est pourquoi si on parcourt le graphe en partant de `E`, on peut facilement de proche en proche parcourir tous les autres commits; `E` contient les `SHA-1` de `C` et de `D`, `C` celui de `B`... 
+
+**Mais* en partant de `A` au contraire, on ne peut pas "remonter" dans le graphe, puisqu'il n'y a pas de référence vers ses fils (en arrière).
 
 Voilà, vous avez compris: un commit connaît le·s commit·s à partir du ou desquel·s il a été créé et c'est tout, il ne connaîtra pas le·s commit·s qui seront créés à partir de lui.
 
@@ -1184,7 +1264,7 @@ Voilà, vous avez compris: un commit connaît le·s commit·s à partir du ou de
 
 +++
 
-Maintenant que nous avons plusieurs commits, nous allons voir comment naviguer dans ces commits. Par exemple pour revenir en arrière à une version précise du logiciel, c'est-à-dire à un commit connu (que vous allez repérer par son message).
+Maintenant que nous avons plusieurs commits, nous allons voir comment naviguer dans ces commits. Par exemple pour revenir en arrière à une version précise du logiciel, c'est-à-dire à un commit connu (que vous allez retrouver dans `git log`).
 
 Afin de demander à `git` de nous *remettre* sur un commit, on va devoir indiquer lequel.
 
@@ -1199,13 +1279,13 @@ Ainsi par exemple, `HEAD` est le commit courant:
    - `HEAD~` est le premier parent de `HEAD`; donc l'avant dernier commit
    - `HEAD~2` est le premier parent du premier parent de `HEAD`
 
-On peut utiliser `~` avec n'importe quelle référence, par exemple `main~`, ou `18b63f5~` si vous avez un SHA-1 qui vaut `18b63f5`.
+On peut utiliser `~` avec n'importe quelle référence, par exemple `main~`, ou `afec18a~` si vous avez un SHA-1 qui vaut `afec18a`.
 
 +++
 
 Prenons, comme exemple, les commits de `my-first-project`:
 ```bash
-$ git lg
+$ git la
 
 * afec18a (HEAD -> main) une implémentation plus juste de la fonction factorielle
 * e2c02ca première implémentation de factorielle dans le fichier fact.py
@@ -1213,13 +1293,13 @@ $ git lg
 * 01b0604 licence+readme
 ```
 
-* `HEAD` est donc le dernier commit (afec18a)
-* `HEAD~` est l'avant dernier commit (e2c02ca)
-* `main~2` est l'avant-avant dernier commit (31c4816)
-* `e2c02ca~` est aussi l'avant-avant dernier commit (31c4816)
+* `HEAD` est donc le dernier commit (`afec18a`)
+* `HEAD~` est l'avant dernier commit (`e2c02ca`)
+* `main~2` est l'avant-avant dernier commit (`31c4816`)
+* `e2c02ca~` est aussi l'avant-avant dernier commit (`31c4816`)
 * ...
 
-C'est plus pratique, pour la rédaction de ce cours, d'utiliser ce type de notation plutôt que d'insérer un SHA-1 en dur, parce qu'entre votre dépôt et le mien, les commits n'ayant pas été créés à la même date, ils n'ont pas le même SHA-1; donc si je veux écrire un script qui revient d'un commit en arrière et qui marche chez tout le monde, je vais utiliser `HEAD~` plutôt que `e2c02ca`.
+C'est plus pratique, pour la rédaction de ce cours, d'utiliser ce type de notation plutôt que d'insérer un SHA-1 en dur, parce qu'entre votre dépôt et le mien, les commits n'ayant pas été créés à la même date, ils n'ont pas le même SHA-1; donc si je veux écrire un script qui marche chez tout le monde, je vais utiliser `HEAD~` plutôt que `e2c02ca`.
 
 +++
 
@@ -1628,6 +1708,7 @@ git diff devel main
 +++ {"tags": []}
 
 ````{admonition} octopus merge
+:class: dropdown information
 
 pour information, on peut même donner à `git merge` plusieurs commits; si on tape par exemple
 
