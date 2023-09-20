@@ -226,7 +226,7 @@ voici comment on navigue dans les différences avec vs-code
 
 si en plus vous installez l'extension 'git graph', vous pourrez aussi voir le graphe des commits directement dans vs-code
 
-![](media/vscode-history.png)
+![](media/vscode-gitgraph-history.png)
 
 +++
 
