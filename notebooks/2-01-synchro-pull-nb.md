@@ -232,7 +232,7 @@ dit autrement, si vous ne faites jamais ni `git pull` ni `git fetch` pendant un 
 
 en pratique on fait plus souvent `git pull` que `git fetch`, car bien sûr souvent ce qu'on veut faire c'est se mettre à jour; et mon opinion c'est que c'est un peu dommage, car le fait de faire d'abord `fetch` permet de bien évaluer l'impact que va avoir le `pull` (notamment : est-ce un fast-forward ?)
 
-une fois qu'on a dit ça, si vous utilisez une GUI comme `Sourcetree` ou `GitKraken` ou autre, il y a de fortes chances qu'elle fasse pour vous un `git fetch` **automatiquement** - genre toutes les 5 minutes; c'est très pratique car ça permet, justement, de recevoir des notifications lorsqu'il y a du nouveau dans le dépôt *upstream*
+une fois qu'on a dit ça, si vous utilisez une GUI comme `Sourcetree` ou `Fork` ou `Tower` ou autre, il y a de fortes chances qu'elle fasse pour vous un `git fetch` **automatiquement** - genre toutes les 5 minutes; c'est très pratique car ça permet, justement, de recevoir des notifications lorsqu'il y a du nouveau dans le dépôt *upstream*
 ````
 
 +++

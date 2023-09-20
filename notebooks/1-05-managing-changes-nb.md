@@ -213,6 +213,23 @@ voici rapidement quelques outils gratuits qui sont bien pratiques
 
 +++
 
+### vs-code
+
+vscode vient avec une extension native 'git'  
+(rien à installer, simplement cliquer sur l'extension dans la barre de gauche)
+
+voici comment on navigue dans les différences avec vs-code
+
+![](media/vscode-changes.png)
+
++++
+
+si en plus vous installez l'extension 'git graph', vous pourrez aussi voir le graphe des commits directement dans vs-code
+
+![](media/vscode-history.png)
+
++++
+
 ### Sourcetree
 
 l'outil `Sourcetree` (malheureusement pas supporté sous linux) visualise les deux classes de différences comme ceci
@@ -238,20 +255,3 @@ l'outil GitKraken, qui est disponible cette fois sur linux, les présente quant 
 ici encore l'outil sait afficher le graphe des commits
 
 ![](media/gitkraken-history.png)
-
-+++
-
-### vs-code
-
-vscode vient avec une extension native 'git'  
-(rien à installer, simplement cliquer sur l'extension dans la barre de gauche)
-
-voici comment on navigue dans les différences avec vs-code
-
-![](media/vscode-changes.png)
-
-+++
-
-si en plus vous installez l'extension 'git graph', vous pourrez aussi voir le graphe des commits directement dans vs-code
-
-![](media/vscode-history.png)
