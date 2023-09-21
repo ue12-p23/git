@@ -129,11 +129,11 @@ ou encore, pendant le debug on a ajouté 250 instructions `print()`, qu'on veut 
 
 +++ {"tags": []}
 
-#### `git reset`
+#### `git restore --staged`
 
 pour annuler le `add` : si un changement a été promu dans l'index, on peut le déclasser
 
-![](media/kn-lifecycle-6-reset.svg)
+![](media/kn-lifecycle-6-restore-staged.svg)
 
 +++ {"tags": []}
 
@@ -145,23 +145,23 @@ pour jeter les changements non indexés
 
 +++ {"tags": []}
 
-#### `git reset --hard`
+#### `git restore --worktree --staged`
 
 pour se mettre inconditionnellement sur un commit, avec un dépôt propre
 
-![](media/kn-lifecycle-8-reset-hard.svg)
+![](media/kn-lifecycle-8-restore-worktree-staged.svg)
 
 +++
 
-````{admonition} tout avec git restore
-:class: dropdown note
+````{admonition} note historique: avant git restore
+:class: dropdown caution
 
-en fait on peut faire toutes ces commandes avec seulement `git restore` avec les options idoines
+dans les versions anciennes de git, i.e. avant que l'on introduise git restore, on devait utiliser à la place ceci
 
-| quoi | illustrations | avec restore |
+| pour faire | avant restore | avec restore |
 |-:|:-:|:-|
 | défaire un add | git reset | git restore --staged |
-| jeter les changements non indexés | git restore | git restore --worktree |
+| jeter les changements non indexés | git checkout | git restore |
 | défaire les deux familles de changements | git reset --hard | git restore --staged --worktree |
 ````
 
