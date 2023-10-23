@@ -80,6 +80,23 @@ on peut envisager deux versions de ce TP
 * un peu moins simple: on fait la modife (2.) avec vs-code, et le reste dans le terminal
   * voyez le notebook **`1-05`** pour les commandes à utiliser 
 
++++
+
+## tp-amend
+
+````{admonition} oops, j'ai raté mon commit
+travail individuel
+
+1. créer un repo, ajouter un commit avec un `README.md` vide
+1. ajouter du texte dans le `README.md`, mettez ça dans un commit
+1. grâce à `git commit --amend`, refaites le commit, et pour cela
+  * retouchez le `README.md` sous vs-code
+  * ajoutez la nouvelle modife avec `git add`
+  * refaites le commit avec `git commit --amend`
+1. vérifiez que vous avez bien 2 commits et pas 3, et que le deuxième contient bien ce qu'il faut
+
+````
+
 +++ {"tags": []}
 
 ## tp-clone-pull
