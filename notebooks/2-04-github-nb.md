@@ -51,29 +51,45 @@ pour ajouter **une dimension sociale** et offrir des possibilités de collaborat
   comme par exemple, pour ce cours justement:  
   <https://github.com/ue12-p23/git>
 
-````{admonition} le remote *origin*
-:class: dropdown
+`````{admonition} le remote *origin*
+:class: dropdown seealso
 
 toujours au sujet des noms, vous pouvez noter que le plus souvent,
 si vous avez dans votre repo local un *remote* qui s'appelle `origin`, 
 avec nos pratiques le plus souvent ce remote correspond au repo sur github:
 
 ```bash
-# pour lister les remotes
+  # pour lister les remotes
 $ git remote
 origin
-# pour voir à quelle URL correspond le remote 'origin'
+  # pour voir à quelle URL correspond le remote 'origin'
 $ git remote get-url origin
 git@github.com:ue12-p23/git.git
 ```
+
+````{admonition} créer un alias
+:class: dropdown tip
+
+si comme moi vous avez du mal à retenir cette dernière commande, 
+c'est le moment de vous créer un alias: 
+``` bash
+git config --global alias.url "remote get-url origin"
+```
+après quoi il vous suffira de faire
+``` bash
+$ git url
+git@github.com:ue12-p23/git.git
+```
+
 ````
+`````
 
 +++
 
 ## les accès
 
-* signalons aussi que chaque repo peut être public ou privé  
-  pour la suite si on ne précise rien ce sera pour parler de repos publics
+* signalons aussi que chaque repo peut être **public** ou **privé**  
+  pour la suite, si on ne précise rien ce sera pour parler de repos publics
 * un repo public peut être  
   **lu**, et donc aussi cloné, par tout le monde  
   **écrit** (ou pourra pousser dedans) par une liste finie de gens définie dans les *Settings* du repo
@@ -87,14 +103,15 @@ git@github.com:ue12-p23/git.git
 ### Alice publie du code
 
 dans un scénario typique:
-1. Alice commence à écrire un bout de code - appelons-le `rhubarbe` - sur son ordi
+1. Alice commence à écrire un bout de code - appelons-le `rhubarbe` - sur son ordi  
   tout au long du codage, elle le met dans un repo git
-1. lorsqu'elle est contente elle va "mettre cela sur github"
-  c'est-à-dire créer un repo vide dans `https://github.com/alice/rhubarbe`
+1. lorsqu'elle est contente elle va "mettre cela sur github"  
+  c'est-à-dire créer un repo vide dans `https://github.com/alice/rhubarbe`  
   et **pousser** son repo dedans
 1. son travail devient donc accessible à tout le monde, et Bob le remarque
 1. il télécharge alors le contenu du repo sur son ordi
   avec un `git clone`
+
 
 +++
 
@@ -145,3 +162,37 @@ dans un scénario typique:
    et là Bob est très content 🙂
 1. et Alice aussi 🙂  
    parce que d'autres peuvent de cette manière la décharger de certains aspects du projet
+
++++
+
+## créer un repo sur github: README or not README ?
+
+signalons un conseil pratique; il y a un point qui gêne pas mal les débutants, au moment de se mettre sur github:
+
+lorsque vous créez le repo par l'interface web de github, on vous demande à un moment:
+
+> voulez-vous créer un README ?
+
+en réalité, cette question devrait plutôt être entendue comme 
+
+> voulez-vous créer un repo complètement vide  (si vous choisissez de ne pas créer un README)
+> ou bien avec un premier commit (qui contiendra alors le README minimal) ?
+
+ou encore, si vous préférez
+
+> est-ce que vous avez déjà commencé à créer des commits de votre coté (ne créez pas le README) ou bien vous partez vraiment de rien ?
+
+en effet, si vous avez déjà créé un ou des commits, il est **fortement recommandé** de ne pas créer de commit du coté de github, car ensuite il faudrait merger deux fils sans ancêtre commun...
+
++++
+
+## `gh` (avancés)
+
+enfin pour les avancés, sachez que toutes les opérations que l'on fait depuis l'interface web peuvent aussi être faits par la ligne de commande en utilsiant un outil qui s'appelle `gh`
+
+voici par exemple comment je crée un repo pour le TP "class-ids" de mon groupe
+
+```bash
+$ gh repo create --public ue12-p23/git-tp-class-ids-groupe4
+✓ Created repository ue12-p23/git-tp-class-ids-groupe4 on GitHub
+```
