@@ -160,9 +160,9 @@ dans les versions anciennes de git, i.e. avant que l'on introduise git restore, 
 
 | pour faire | avant restore | avec restore |
 |-:|:-:|:-|
-| défaire un add | git reset | git restore --staged |
-| jeter les changements non indexés | git checkout | git restore |
-| défaire les deux familles de changements | git reset --hard | git restore --staged --worktree |
+| défaire un add | `git reset` | `git restore --staged` |
+| jeter les changements non indexés | `git checkout` | `git restore` |
+| défaire les deux familles de changements | `git reset --hard` | `git restore --staged --worktree` |
 ````
 
 +++ {"tags": []}
