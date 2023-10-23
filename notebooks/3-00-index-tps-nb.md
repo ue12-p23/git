@@ -103,14 +103,51 @@ un tp plus complet où on simule un travail en groupe
 
 ## tp-pull-request
 
-un tp à faire à deux  
+un TP à faire à deux  
 
 * élève `A` crée un repo sur github, avec du contenu; le repo est **public**
 * pour la suite, c'est essentiellement élève `B` qui bosse, élève `A` peut profitablement regarder :)
-* élève `B` clone le repo, fait une modification dans un commit
+* élève `B` clone le repo, fait une modification et la met dans un commit
 * élève `B` essaie de pousser son nouveau commit dans le github de `A`, mais échoue car il n'a pas les droits
 * élève `B` demande à github de lui créer **un *fork***
 * élève `B` pousse son commit dans son *fork* (il a le droit cette fois)
 * élève `B` crée (dans le repo de `A`) un *pull request**
 * élève `A` consulte le pull request, et accepte (merge) le changement
 * on vérifie que la modification de `B` est bien dans le repo de `A`
+
+on recommence en inversant les rôles...
+
+````{admonition} indice
+:class: tip
+
+dans l'écran de création du PR, il y a un bouton ***"compare across forks"*** qu'il faut cliquer pour pouvoir créer une PR entre deux repos distincts
+````
+
++++
+
+## tp-class-text
+
+un TP à faire à toute la classe
+
+<https://github.com/ue12-p23-git-tp-class-text-reference>
+
+demande une préparation très courte de la part du prof
+
+````{admonition} à faire par le prof
+:class: dropdown seealso
+
+à destination des avancés, et pour illustrer le cours, voici comment le prof peut faire la préparation pour cet exo
+
+```bash
+  # cloner localement le repo de référence
+git clone git@github.com:ue12-p23/git-tp-class-text-reference.git
+  # aller dedans
+cd git-tp-class-text-reference
+  # créer le repo sur github - il faut avoir les droits
+gh repo create --public ue12-p23/git-tp-class-text-groupe4
+  # ajouter un remote qui pointe vers ce nouveau repo (vide pour l'instant)
+git remote add my-group git@github.com:ue12-p23/git-tp-class-text-groupe4.git
+  # pousser dedans
+git push my-group main
+```
+````
