@@ -54,6 +54,32 @@ on crée délibérément un conflit pour savoir reconnaître les symptômes, et 
 <https://github.com/ue12-p23/git-tp-conflict>
 ````
 
++++
+
+## tp-pending-changes
+
+````{admonition} faire et défaire
+:class: seealso
+
+travail individuel
+
+1. créer un repo, ajouter dedans un commit avec un `README.md` vide
+1. faites une modification avec vs-code
+1. ajoutez-la dans l'index
+1. vous changez d'avis, vous ne la voulez plus dans l'index, défaites 3.
+1. et en fait vous ne voulez plus du tout de cette modife, vous la jetez complètement
+1. on vérifie avec `git status` que le repo est propre
+````
+
+on peut envisager deux versions de ce TP
+
+* la plus simple: on fait tout sous vs-code
+  * pour 3., il faut chercher **`+`**
+  * et assez logiquement pour 4, il faut chercher **`-`**
+  * pour 5. le verbe est *discard*
+* un peu moins simple: on fait la modife (2.) avec vs-code, et le reste dans le terminal
+  * voyez le notebook **`1-05`** pour les commandes à utiliser 
+
 +++ {"tags": []}
 
 ## tp-clone-pull
@@ -68,9 +94,11 @@ comment faire pour réconcilier votre copie locale avec la nouvelle version du c
 
 et que se passe-t-il alors exactement dans votre copie locale, si vous avez vous-même fait des changements dans les notebooks ?
 
-ce TP demande une préparation spécifique par groupe; suivez les instructions de votre enseignant, une fois que c'est prêt vous devrez visiter une URL **dans le genre de**  
-*https://github.com/ue12-p23/git-tp-clone-pull-groupe1*  
-1 étant ici le **numéro de votre groupe**
+ce TP demande une préparation spécifique par groupe  
+suivez les instructions de votre enseignant   
+une fois que c'est prêt vous devrez visiter une URL **dans le genre de**  
+*`https://github.com/ue12-p23/git-tp-clone-pull-groupe1`*  
+avec bien sûr le bon numéro de groupe
 ````
 
 +++ {"tags": []}
