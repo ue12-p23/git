@@ -75,7 +75,7 @@ même si clairement **il s'applique le mieux** à des contenus **de nature textu
 ## d'autres ressources pour ce cours
 
 * en version HTML statique :  
-  <https://nbhosting.inria.fr/builds/ue12-p23-git/handouts/latest/>
+  <https://ue12-p23-git.readthedocs.io/>
 
 * les sources de ce cours :
   <https://github.com/ue12-p23/git>
