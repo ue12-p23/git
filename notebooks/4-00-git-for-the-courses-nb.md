@@ -48,7 +48,8 @@ distant; on explicite également les étapes de mise à jour ci-dessous
 
 +++
 
-reportez-vous au cours d'introduction pour vous assurer, si besoin, que vous avez bien configuré git
+reportez-vous au cours d'introduction pour vous assurer, si besoin, que vous
+avez bien configuré git
 
 pour rappel, il est nécessaire de configurer
 
@@ -67,13 +68,17 @@ pour rappel, il est nécessaire de configurer
 * se déplacer (avec les commandes `pwd` et `ls` et `cd`) dans le dossier souhaité
 * une fois dans le dossier où vous souhaitez cloner les notebooks  
   (par exemple `/Users/jeanmineur/git/ue12-p23`), faire
+
   ```bash
   git clone git@github.com:ue12-p23/numerique.git
   ```
   pour trouver la bonne URL, regardez comment on fait dans la vidéo  
-  en faisant bien attention de choisir le mode `SSH` comme ceci:  
+  en faisant bien attention de choisir le mode `SSH` comme ceci:
 
-  ![](media/github-choose-ssh.png)
+  ```{image} media/github-choose-ssh.png
+  :width: 500px
+  :align: center
+  ```
 
 * un dossier va être créé, ici il s'appelle `numerique`  
   (si vous préférez un autre nom, ajoutez le à la commande ci-dessus)
@@ -82,8 +87,12 @@ pour rappel, il est nécessaire de configurer
   les  notebooks ! ils sont généralement dans un sous-dossier `notebooks/`
 
 en naviguant sur github et plus particulièrement sur la page de l'orga
-ue12-p23 (https://github.com/ue12-p23/), vous pouvez voir l'ensemble des
-répertoires des cours d'informatique que vous avez eu jusque-là !
+ue12-p23 (<https://github.com/ue12-p23/>), vous pouvez voir l'ensemble des
+répertoires des cours d'informatique que vous avez eu jusque-là ! 
+
+````{admonition} et au second semestre ?
+au second semestre les cours seront dans l'orga <https://github.com/ue22-p23/>
+````
 
 +++
 
@@ -92,20 +101,22 @@ répertoires des cours d'informatique que vous avez eu jusque-là !
 * *optionnel*: vous pouvez aussi créer un environnement virtuel en lui donnant
   un nom (et éventuellement la version de `python` que vous voulez);
   ici je choisis de créer un environnement virtuel qui s'appelle aussi `numerique`
-  
+
   ```bash
-  conda create -n numerique python=3.9.0
+  conda create -n numerique python=3.12
   ```
 
 * *optionnel*: si vous utilisez un système d'environnements virtuels, prenez
   soin de sélectionner le bon; il faut le faire à chaque fois qu'on crée un nouveau terminal,
-  par exemple 
+  par exemple
+
   ```bash
   conda activate numerique
   ```
 
 * dans le dossier du cours se trouve un fichier `requirements.txt`  
-  allez dans ce dossier et tapez  
+  allez dans ce dossier et tapez
+
   ```bash
   pip install -r requirements.txt
   ```
@@ -113,6 +124,7 @@ répertoires des cours d'informatique que vous avez eu jusque-là !
 * a minima il vous faut avoir installé `jupyter` et `jupytext`  
   qui devraient en principe être installés à ce stade; si ce n'est pas le cas,
   faites
+
   ```bash
   pip install jupyter jupytext
   ```
@@ -122,9 +134,11 @@ répertoires des cours d'informatique que vous avez eu jusque-là !
 ## lire le cours
 
 * toujours dans le dossier du cours, en faisant
+
   ```bash
   jupyter lab
   ```
+
   vous lancez le serveur et ainsi pouvez lire les notebooks
 
 +++
@@ -136,11 +150,11 @@ avant chaque nouveau cours, pour mettre à jour votre dossier de cours:
 * lancer `Git Bash`
 * vous rendre dans le dossier local où vous avez cloné le répertoire  
   (la commande `git status` devrait fonctionner à cet endroit)
-
 * faire `git pull`
 * il est possible que tout fonctionne bien :)
 * néanmoins, si jamais **vous avez modifié certains fichiers**, il vous faudra
   d'abord enregistrer vos modifications:
+
   ```bash
   git add -u
   git commit -m "j'enregistre mes modifications"
@@ -163,12 +177,13 @@ changements faits par le prof); normalement c'est assez
 rare, mais si c'est le cas, il va vous falloir régler les conflits; voici
 comment les résoudre:
 
-* après le `git pull`, faites un `git status`  
+* après le `git pull`, faites un `git status`
 * les fichiers en rouge dans la catégorie `unmerged paths` correspondent à ceux
   qui sont en conflit.
 
 * ouvrez les fichiers correspondants sur vscode.
   * les blocs en conflits (potentiellement plusieurs par fichier) ressemblent à ça :
+
     ```text
     <<<<<<< HEAD
     votre code
@@ -183,9 +198,11 @@ comment les résoudre:
 
 * une fois tous les conflits de tous les fichiers résolus, vous pouvez faire
 `git add` des fichiers en question, et enfin
+
   ```bash
   git commit --no-edit
   ```
+
   Et normalement vous avez maintenant la version locale à jour !  
   (le `--no-edit` sert à ne pas passer dans l'éditeur, il n'est vraiment pas
   utile ici de mettre un message spécifique)
