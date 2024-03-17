@@ -40,7 +40,7 @@ de l'environnement en action
 
 attention, nous mettons régulièrement à jour les notebooks chaque semaine; du
 coup pour garder votre travail **et** une version à jour, il faut *pull* le dépôt
-distant; on explicite également les étapes de mise à jour ci-dessous
+distant; on aborde aussi cette étape [un peu plus bas](label-pull-course)
 
 +++
 
@@ -143,9 +143,10 @@ au second semestre les cours seront dans l'orga <https://github.com/ue22-p23/>
 
 +++
 
+(label-pull-course)=
 ## mettre à jour sa version locale
 
-avant chaque nouveau cours, pour mettre à jour votre dossier de cours:
+avant chaque nouveau cours, comme le prof a pu faire quelques petits changements, il est utile de mettre à jour votre dossier de cours; et pour cela:
 
 * lancer `Git Bash`
 * vous rendre dans le dossier local où vous avez cloné le répertoire  
@@ -181,7 +182,7 @@ comment les résoudre:
 * les fichiers en rouge dans la catégorie `unmerged paths` correspondent à ceux
   qui sont en conflit.
 
-* ouvrez les fichiers correspondants sur vscode.
+* ouvrez les fichiers correspondants dans vs-code.
   * les blocs en conflits (potentiellement plusieurs par fichier) ressemblent à ça :
 
     ```text
