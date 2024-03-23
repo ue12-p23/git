@@ -97,13 +97,18 @@ c'est finalement plus simple ici, puisqu'il y a déjà un repo constitué, mais 
 * il s'agit donc de dupliquer le repo de départ, avant d'y ajouter votre contribution  
   pour cela deux options sont possibles
 
-  1. option *fork*: c'est le plus simple: vous faites un *fork* du repo en question dans votre espace github
+  1. option *fork*: c'est **le plus simple**: vous faites un *fork* du repo en question dans votre espace github
   1. option "manuelle": vous clonez le repo sur votre ordi, puis vous créez un repo sur github à partir de ce clone
 
 dans les deux cas à nouveau, on vous demande de faire un **repo privé**, aussi **pensez à y inviter votre prof** !  
 en détails ça donnerait ceci
 
 #### option *fork*
+
+```{image} media/fork-clone-push-pull-request.svg
+:align: center
+:width: 500px
+```
 
 - vous allez sur la page du repo - e.g. <https://github.com/ue22-p23/web-xkcd> - et vous cliquez sur *Fork*
 - cela crée pour vous une copie ici <https://github.com/jeanmineur/web-xkcd>
